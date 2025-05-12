@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- Water Use Calculator v2.1 - Auteur : HUMANBLINK Innovation -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculateur de Consommation d'Eau</title>
+</head>
+<body>
+  <h2>Estimateur de Consommation d'Eau Potable</h2>
+  <p>
+    Estimez votre consommation mensuelle et annuelle d'eau potable en fonction du type de bâtiment, du nombre de personnes,
+    et de la saisonnalité. Choisissez votre type d'usage, indiquez la population concernée (résidents, étudiants, etc.),
+    ajustez éventuellement la consommation avec le menu déroulant, et si vous estimez pour des bureaux,
+    spécifiez un pourcentage moyen de présence.
+  </p>
+
+  <!-- Champs de saisie -->
+  <label for="useCase">Type d'usage :</label>
+  <select id="useCase">
+    <option value="Households">Ménages</option>
+    <option value="Schools / Universities">Écoles / Universités</option>
+    <option value="Municipal Buildings">Bâtiments Municipaux</option>
+    <option value="Sport Clubs">Clubs de Sport</option>
+    <option value="Business Buildings">Bureaux</option>
+  </select>
+  <br><br>
+
+  <label for="population">Nombre de personnes (résidents, étudiants, etc.) :</label>
+  <input type="number" id="population" value="4">
+  <br><br>
+
+  <label for="adjustment">Ajustement (%) :</label>
+  <select id="adjustment">
+    <option value="-30">-30%</option>
+    <option value="-20">-20%</option>
+    <option value="-10">-10%</option>
+    <option value="0" selected>0%</option>
+    <option value="10">+10%</option>
+    <option value="20">+20%</option>
+    <option value="30">+30%</option>
+  </select>
+  <br><br>
+
+  <label for="attendance">Présence moyenne (%) (bureaux uniquement) :</label>
+  <input type="number" id="attendance" value="100">
+  <br><br>
+
+  <button onclick="calculateWaterUse()">Calculer</button>
+
+  <!-- Résultats -->
+  <h3>Résultats :</h3>
+  <pre id="output"></pre>
+  <h4>Résumé des Calculs :</h4>
+  <pre id="summary"></pre>
+
+<script>
+// v2.1 - Geneva-based water calculator - Auteur : HUMANBLINK Innovation
+const constants = {
+  months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+  daysPerMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+  monthlyWeights: {
+    "Households": [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.10, 0.10, 0.09, 0.08, 0.07, 0.07],
+    "Schools / Universities": [0.10, 0.10, 0.11, 0.11, 0.11, 0.07, 0.00, 0.00, 0.11, 0.11, 0.10, 0.08],
+    "Municipal Buildings": [0.08, 0.08, 0.09, 0.09, 0.10, 0.10, 0.07, 0.07, 0.09, 0.09, 0.07, 0.07],
+    "Sport Clubs": [0.09, 0.09, 0.10, 0.10, 0.10, 0.08, 0.05, 0.05, 0.09, 0.09, 0.09, 0.07],
+    "Business Buildings": [0.08, 0.08, 0.09, 0.09, 0.10, 0.10, 0.07, 0.07, 0.09, 0.09, 0.07, 0.07]
+  },
+  dailyLiters: {
+    "Households": 160,
+    "Schools / Universities": 50,
+    "Municipal Buildings": 90,
+    "Sport Clubs": 40,
+    "Business Buildings": 80
+  }
+};
+
+function calculateWaterUse() {
+  const useCase = document.getElementById("useCase").value;
+  const population = parseInt(document.getElementById("population").value);
+  const adjustment = parseFloat(document.getElementById("adjustment").value);
+  let attendance = parseFloat(document.getElementById("attendance").value);
+  if (isNaN(attendance)) attendance = 100;
+
+  const baseLiters = constants.dailyLiters[useCase];
+  const adjustedLiters = baseLiters * (1 + adjustment / 100);
+  const seasonalWeights = constants.monthlyWeights[useCase];
+  const months = constants.months;
+  const output = [];
+  let annualTotal = 0;
+
+  let totalAnnualLiters = adjustedLiters * population * 365;
+  if (useCase === "Business Buildings") {
+    totalAnnualLiters *= attendance / 100;
+  }
+
+  months.forEach((month, i) => {
+    let monthlyLiters = totalAnnualLiters * seasonalWeights[i];
+    const m3 = monthlyLiters / 1000;
+    annualTotal += m3;
+    const perCapita = population > 0 ? m3 / population : 0;
+    output.push(`${month} : ${m3.toFixed(2)} m³ total, ${perCapita.toFixed(2)} m³ par personne`);
+  });
+
+  output.push(`\nTotal Annuel : ${annualTotal.toFixed(2)} m³`);
+  document.getElementById("output").textContent = output.join("\n");
+
+  const summaryText = `Base de Calcul :\n` +
+    `Type d'usage : ${useCase}\n` +
+    `Population : ${population}\n` +
+    `Consommation journalière de base : ${baseLiters} L/jour/personne\n` +
+    `Ajustement utilisateur : ${adjustment}% → Ajustée à ${adjustedLiters.toFixed(1)} L/jour/personne\n` +
+    (useCase === "Business Buildings" ? `Présence appliquée : ${attendance}%\n` : ``) +
+    `Total annuel estimé : ${Math.round(totalAnnualLiters)} L\n` +
+    `Réparti mensuellement selon les profils saisonniers de Genève.`;
+
+  document.getElementById("summary").textContent = summaryText;
+}
+</script>
+</body>
+</html>
