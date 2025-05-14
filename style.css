@@ -1,0 +1,22 @@
+/* style.css - v1.0 - Aqua Theme */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8f7;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+h1, h2 {
+  color: #00796b;
+}
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+.module-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

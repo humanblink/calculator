@@ -1,0 +1,216 @@
+<!-- index.html - Final Water Calculator - v1.3 -->
+<!-- Author: HUMANBLINK Innovation -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur Final de l'Eau</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .month-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .month-option {
+      flex: 1 0 21%;
+      min-width: 110px;
+      padding: 14px;
+      background-color: #e0f7fa;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid #00796b;
+      font-weight: bold;
+    }
+    .month-option input[type="checkbox"] {
+      transform: scale(1.8);
+      margin-bottom: 8px;
+    }
+    .month-option label {
+      cursor: pointer;
+      display: block;
+    }
+
+/* ✅ NEW: Shared Table Styling */
+  .result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-family: sans-serif;
+  font-size: 1em;
+  background-color: #ffffff;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.result-table th,
+.result-table td {
+  padding: 10px 14px;
+  border: 1px solid #b2dfdb;
+  text-align: left;
+}
+
+.result-table th {
+  background-color: #e0f7fa;
+  color: #004d40;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.result-table tr:nth-child(even) {
+  background-color: #f0f8f7;
+}
+
+  </style>
+
+
+</head>
+<body>
+  <div class="container">
+    <h1>💧 Calculateur Final de l'Eau - Genève</h1>
+
+    <!-- Section 1: Garden Irrigation Calculator -->
+    <section id="garden-section" class="module-section">
+      <h2>🌿 Arrosage des Espaces Verts</h2>
+      <div class="input-grid">
+        <label>Surface du jardin (m²):
+          <input type="number" id="area" min="10" max="2000">
+        </label>
+        <label>Type de plante:
+          <select id="plantType">
+            <option>Gazon</option>
+            <option>Jardin mixte</option>
+            <option>Légumes</option>
+            <option>Plantes ornementales</option>
+          </select>
+        </label>
+        <label>Exposition au soleil:
+          <select id="sun">
+            <option>Ensoleillement total</option>
+            <option>Mi-ombre</option>
+            <option>Ombre majoritaire</option>
+          </select>
+        </label>
+        <label>Type de sol:
+          <select id="soilType">
+            <option>Argileux</option>
+            <option>Limoneux</option>
+            <option>Sableux</option>
+            <option>Tourbeux</option>
+          </select>
+        </label>
+        <label>Méthode:
+          <select id="irrigationType">
+            <option>Arrosage manuel</option>
+            <option>Goutte-à-goutte</option>
+            <option>Sprinkler</option>
+          </select>
+        </label>
+        <label>Efficacité (%):
+          <select id="efficiency">
+            <option>60</option>
+            <option>75</option>
+            <option>90</option>
+          </select>
+        </label>
+        <label>Fréquence d'arrosage:
+          <select id="frequency">
+            <option>1 fois par semaine</option>
+            <option>Chaque jour</option>
+            <option>Chaque 2 jours</option>
+            <option>Chaque 3 jours</option>
+          </select>
+        </label>
+        <label>Ajuster pour arrosage avec capteurs de sols:
+          <input type="checkbox" id="sensorAdjustment">
+        </label>
+      </div>
+
+      <label>Mois sélectionnés :</label>
+      <div class="month-group">
+        <div class="month-option"><input type="checkbox" id="jan" name="month"><label for="jan">Janvier</label></div>
+        <div class="month-option"><input type="checkbox" id="feb" name="month"><label for="feb">Février</label></div>
+        <div class="month-option"><input type="checkbox" id="mar" name="month"><label for="mar">Mars</label></div>
+        <div class="month-option"><input type="checkbox" id="apr" name="month"><label for="apr">Avril</label></div>
+        <div class="month-option"><input type="checkbox" id="may" name="month"><label for="may">Mai</label></div>
+        <div class="month-option"><input type="checkbox" id="jun" name="month"><label for="jun">Juin</label></div>
+        <div class="month-option"><input type="checkbox" id="jul" name="month"><label for="jul">Juillet</label></div>
+        <div class="month-option"><input type="checkbox" id="aug" name="month"><label for="aug">Août</label></div>
+        <div class="month-option"><input type="checkbox" id="sep" name="month"><label for="sep">Septembre</label></div>
+        <div class="month-option"><input type="checkbox" id="oct" name="month"><label for="oct">Octobre</label></div>
+        <div class="month-option"><input type="checkbox" id="nov" name="month"><label for="nov">Novembre</label></div>
+        <div class="month-option"><input type="checkbox" id="dec" name="month"><label for="dec">Décembre</label></div>
+      </div>
+
+      <button class="btn-calculate" onclick="calculateIrrigation()">Calculer</button>
+      <div class="section" id="results"></div>
+    </section>
+
+    <!-- Section 2: Building Water Calculator -->
+    <section id="building-section" class="module-section">
+      <h2>🏢 Consommation Eau des Bâtiments</h2>
+      <label for="useCase">Type d'usage :</label>
+      <select id="useCase">
+        <option value="Households">Ménages</option>
+        <option value="Schools / Universities">Écoles / Universités</option>
+        <option value="Municipal Buildings">Bâtiments Municipaux</option>
+        <option value="Sport Clubs">Clubs de Sport</option>
+        <option value="Business Buildings">Bureaux</option>
+      </select>
+      <label for="population">Nombre de personnes :</label>
+      <input type="number" id="population" value="4">
+      <label for="adjustment">Ajustement (%) :</label>
+      <select id="adjustment">
+        <option value="-50">-50%</option>
+        <option value="0" selected>0%</option>
+        <option value="50">+50%</option>
+      </select>
+      <label for="attendance">Présence moyenne (%) (bureaux uniquement) :</label>
+      <input type="number" id="attendance" value="100">
+      <button onclick="calculateWaterUse()">Calculer</button>
+      
+      
+    
+<div id="buildingResults"></div>
+</section>
+
+    <!-- Section 3: Water Cost Calculator -->
+    <section id="cost-section" class="module-section">
+      <h2>💰 Estimation du Coût (SIG)</h2>
+      <label>Consommation eau espaces verts (m³/an):
+        <input type="number" id="irrigation" min="0" step="0.01">
+      </label>
+      <label>Réduction liée à l'utilisation de capteurs (%):
+        <select id="reduction">
+          <option value="0">0%</option>
+          <option value="-10">-10%</option>
+          <option value="-20">-20%</option>
+          <option value="-30">-30%</option>
+          <option value="-40">-40%</option>
+          <option value="-50">-50%</option>
+        </select>
+      </label>
+      <label>Consommation eau bâtiment (m³/an):
+        <input type="number" id="building" min="0" step="0.01">
+      </label>
+      <button onclick="calculateCost()">Calculer le coût</button>
+      <div class="results" id="output"></div>
+    </section>
+  </div>
+
+  <script src="js/garden.js"></script>
+  <script src="js/building.js"></script>
+  <script src="js/cost.js"></script>
+</body>
+</html>
