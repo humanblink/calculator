@@ -1,0 +1,229 @@
+<!-- index.html - Final Water Calculator - v1.9 -->
+<!-- Author: HUMANBLINK Innovation -->
+<!-- Updated: 2025-05-16 -->
+<!-- Changes in v1.9: 
+     - Implemented dual placement with minimal header and detailed footer
+     - Updated cost calculator label to "Économie par arrosage intelligent (%)"
+     - Added copyright information
+     - Updated CSS version reference to 2.2.0
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur Final de l'Eau</title>
+  <link rel="stylesheet" href="css/style.css?v=2.2.1">
+</head>
+<body>
+  <div class="container">
+    <!-- Compact Header -->
+    <div class="compact-header">
+      <div class="company-logo">
+        <img src="img/humanblink-logo.png" alt="HUMANBLINK" height="24">
+        HUMANBLINK
+      </div>
+      <div class="separator"></div>
+      <div class="product-name">
+        <span class="product-icon">💧</span> EcoAqua
+      </div>
+    </div>
+
+    <h1>
+      <span class="title-main">💧 EcoAqua</span><br>
+      <span class="title-sub">Calculateur d'Empreinte Hydrique</span><br>
+      <span class="title-region">Région Genève</span>
+    </h1>
+
+    <!-- Section 1: Garden Irrigation Calculator -->
+    <section id="garden-section" class="module-section">
+      <h2>🌿 Arrosage des Espaces Verts</h2>
+      <div class="input-grid">
+        <label>Surface du jardin (m²):
+          <input type="number" id="area" min="10" max="2000">
+        </label>
+        <label>Type de plante:
+          <select id="plantType">
+            <option>Gazon</option>
+            <option>Jardin mixte</option>
+            <option>Légumes</option>
+            <option>Plantes ornementales</option>
+          </select>
+        </label>
+        <label>Exposition au soleil:
+          <select id="sun">
+            <option>Ensoleillement total</option>
+            <option>Mi-ombre</option>
+            <option>Ombre majoritaire</option>
+          </select>
+        </label>
+        <label>Type de sol:
+          <select id="soilType">
+            <option>Argileux</option>
+            <option>Limoneux</option>
+            <option>Sableux</option>
+            <option>Tourbeux</option>
+          </select>
+        </label>
+        <label>Méthode:
+          <select id="irrigationType">
+            <option>Arrosage manuel</option>
+            <option>Goutte-à-goutte</option>
+            <option>Sprinkler</option>
+          </select>
+        </label>
+        <label>Efficacité (%):
+          <select id="efficiency">
+            <option>60</option>
+            <option>75</option>
+            <option>90</option>
+          </select>
+        </label>
+        <label>Fréquence d'arrosage:
+          <select id="frequency">
+            <option>1 fois par semaine</option>
+            <option>Chaque jour</option>
+            <option>Chaque 2 jours</option>
+            <option>Chaque 3 jours</option>
+          </select>
+        </label>
+        <label>Ajuster pour arrosage avec capteurs de sols:
+          <input type="checkbox" id="sensorAdjustment">
+        </label>
+      </div>
+
+      <div class="month-selection">
+        <label>Mois sélectionnés :</label>
+        <div class="season-selection">
+          <input type="checkbox" id="growingSeason" name="season">
+          <label for="growingSeason">Sélectionner la saison de croissance (Avril-Septembre)</label>
+        </div>
+        <div class="month-group">
+          <!-- Row 1: January-March -->
+          <div class="month-option"><input type="checkbox" id="jan" name="month"><label for="jan">Janvier</label></div>
+          <div class="month-option"><input type="checkbox" id="feb" name="month"><label for="feb">Février</label></div>
+          <div class="month-option"><input type="checkbox" id="mar" name="month"><label for="mar">Mars</label></div>
+          
+          <!-- Row 2: April-June -->
+          <div class="month-option"><input type="checkbox" id="apr" name="month"><label for="apr">Avril</label></div>
+          <div class="month-option"><input type="checkbox" id="may" name="month"><label for="may">Mai</label></div>
+          <div class="month-option"><input type="checkbox" id="jun" name="month"><label for="jun">Juin</label></div>
+          
+          <!-- Row 3: July-September -->
+          <div class="month-option"><input type="checkbox" id="jul" name="month"><label for="jul">Juillet</label></div>
+          <div class="month-option"><input type="checkbox" id="aug" name="month"><label for="aug">Août</label></div>
+          <div class="month-option"><input type="checkbox" id="sep" name="month"><label for="sep">Septembre</label></div>
+          
+          <!-- Row 4: October-December -->
+          <div class="month-option"><input type="checkbox" id="oct" name="month"><label for="oct">Octobre</label></div>
+          <div class="month-option"><input type="checkbox" id="nov" name="month"><label for="nov">Novembre</label></div>
+          <div class="month-option"><input type="checkbox" id="dec" name="month"><label for="dec">Décembre</label></div>
+        </div>
+      </div>
+
+      <button class="btn-calculate" onclick="calculateIrrigation()">Calculer</button>
+      <div class="section" id="results"></div>
+    </section>
+
+    <!-- Section 2: Building Water Calculator -->
+    <section id="building-section" class="module-section">
+      <h2>🏢 Consommation Eau des Bâtiments</h2>
+      <div class="input-grid">
+        <label for="useCase">Type d'usage :</label>
+        <select id="useCase">
+          <option value="Households">Ménages</option>
+          <option value="Schools / Universities">Écoles / Universités</option>
+          <option value="Municipal Buildings">Bâtiments Municipaux</option>
+          <option value="Sport Clubs">Clubs de Sport</option>
+          <option value="Business Buildings">Bureaux</option>
+        </select>
+        
+        <label for="population">Nombre de personnes :</label>
+        <input type="number" id="population" value="4">
+        
+        <label for="adjustment">Ajustement (%) :</label>
+        <select id="adjustment">
+          <option value="-50">-50%</option>
+          <option value="0" selected>0%</option>
+          <option value="50">+50%</option>
+        </select>
+        
+        <label for="attendance">Présence moyenne (%) (bureaux uniquement) :</label>
+        <input type="number" id="attendance" value="100">
+      </div>
+      <button onclick="calculateWaterUse()">Calculer</button>
+      <div id="buildingResults"></div>
+    </section>
+
+    <!-- Section 3: Water Cost Calculator -->
+    <section id="cost-section" class="module-section">
+      <h2>💰 Estimation du Coût (SIG)</h2>
+      <div class="input-grid">
+        <label>Consommation eau espaces verts (m³/an):
+          <input type="number" id="irrigation" min="0" step="0.01">
+        </label>
+        <label>Économie par arrosage intelligent (%):
+          <select id="reduction">
+            <option value="0">0%</option>
+            <option value="-10">-10%</option>
+            <option value="-20">-20%</option>
+            <option value="-30">-30%</option>
+            <option value="-40">-40%</option>
+            <option value="-50">-50%</option>
+          </select>
+        </label>
+        <label>Consommation eau bâtiment (m³/an):
+          <input type="number" id="building" min="0" step="0.01">
+        </label>
+      </div>
+      <button onclick="calculateCost()">Calculer le coût</button>
+      <div class="results" id="output"></div>
+    </section>
+
+    <!-- Footer with detailed information -->
+    <footer class="page-footer">
+      <div class="footer-row">
+        <div class="footer-company">
+          <img src="img/humanblink-logo.png" alt="HUMANBLINK" height="18">
+          HUMANBLINK Innovation
+        </div>
+        <div class="footer-version">v1.9.0 (2025-05-16)</div>
+      </div>
+      <div class="footer-row">
+        <div class="footer-disclaimer">Utilisation à des fins d'évaluation uniquement</div>
+      </div>
+      <div class="footer-copyright">
+        © 2025 HUMANBLINK Innovation - Tous droits réservés
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts with version parameters to prevent caching -->
+  <script src="js/garden.js?v=2.1.6"></script>
+  <script src="js/building.js?v=2.3.3"></script>
+  <script src="js/cost.js?v=2.8.3"></script>
+  <script src="js/footnotes.js?v=1.0.2"></script>
+  
+  <!-- New JavaScript for growing season selection -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Growing season checkbox functionality
+      document.getElementById('growingSeason').addEventListener('change', function() {
+        const growingMonths = ['apr', 'may', 'jun', 'jul', 'aug', 'sep'];
+        growingMonths.forEach(month => {
+          document.getElementById(month).checked = this.checked;
+        });
+      });
+    });
+  </script>
+  
+  <!-- Diagnostic script to check if JS functions are loaded -->
+  <script>
+    console.log("Checking if JS files are loaded:");
+    console.log("garden.js loaded:", typeof calculateIrrigation === "function");
+    console.log("building.js loaded:", typeof calculateWaterUse === "function"); 
+    console.log("cost.js loaded:", typeof calculateCost === "function");
+    console.log("footnotes.js loaded:", document.querySelectorAll('.calculation-base').length > 0);
+  </script>
+</body>
+</html>

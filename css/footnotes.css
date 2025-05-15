@@ -1,0 +1,71 @@
+/* Collapsible Footnotes - Version 1.0.0 - Date: 2025-05-16 */
+/* Makes all explanatory footnotes collapsible to reduce visual clutter */
+
+.calculation-base {
+  position: relative;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.calculation-base.collapsed {
+  max-height: 48px; /* Just enough for the header */
+  opacity: 0.9;
+}
+
+.calculation-base.expanded {
+  max-height: 1000px; /* Large enough for all content */
+}
+
+.calculation-base h4 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0; /* Adjusted when collapsed */
+  padding: 10px 0;
+  user-select: none; /* Prevent text selection */
+}
+
+.calculation-base.expanded h4 {
+  margin-bottom: 12px; /* Original margin restored when expanded */
+}
+
+.toggle-indicator {
+  font-size: 0.85rem;
+  color: var(--primary);
+  background-color: rgba(2, 136, 209, 0.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.calculation-base.expanded .toggle-indicator {
+  transform: rotate(180deg);
+}
+
+.calculation-content {
+  transition: opacity 0.3s ease;
+}
+
+.calculation-base.collapsed .calculation-content {
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.calculation-base.expanded .calculation-content {
+  opacity: 1;
+}
+
+/* Hover effect for better UX */
+.calculation-base h4:hover .toggle-indicator {
+  background-color: rgba(2, 136, 209, 0.2);
+}
+
+/* Add a subtle hint that this is interactive */
+.calculation-base h4:hover {
+  color: var(--primary);
+}
