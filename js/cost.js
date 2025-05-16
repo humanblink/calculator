@@ -1,4 +1,4 @@
-// Version JS 2.8.3 - Auteur : HUMANBLINK Innovation - Date : 2025-05-16
+// Version JS 2.8.4 - Auteur : HUMANBLINK Innovation - Date : 2025-05-16
 // Changes in v2.1: Reorganized output order - moved "Coût total après réduction" to appear after "Consommation totale"
 // Changes in v2.2: Reorganized output into "État Actuel" and "État Futur" sections, moved variable/fixed costs to a footnote
 // Changes in v2.3: Changed "Économies Réalisées" to "C. Économies Réalisées" for consistency; Set section headers to blue color
@@ -10,6 +10,7 @@
 // Changes in v2.8.1: Version increment for cache busting, fixed function declaration
 // Changes in v2.8.2: Added auto-load of garden and building calculation values
 // Changes in v2.8.3: Fixed styling in footnote - only titles should be bold
+// Changes in v2.8.4: Added "Eau économisée" line in the État Futur section
 
 // Définition des tranches tarifaires SIG 2025 (particulier)
 const tiers = [
@@ -70,7 +71,7 @@ function calculateCost() {
   const savingsPct = (100 * savedCHF / totalInitialCost);
 
   // Construction du bloc de sortie HTML avec les résultats
-  // CHANGED: Updated footnote to ensure only titles are bold
+  // CHANGED v2.8.4: Added "Eau économisée" line in the État Futur section
   const outputHTML = `
     <h2>Résultats détaillés</h2>
     
@@ -87,6 +88,7 @@ function calculateCost() {
       <p>Réduction appliquée à la consommation d'espaces verts : ${formatSwiss(Math.abs(reduction))}%</p>
       <p>Consommation espaces verts après réduction : ${formatSwiss(irrigationAfter)} m³/an</p>
       <p><strong>Consommation totale (espaces verts + bâtiment) après réduction :</strong> <span style="color: green;">${formatSwiss(total)} m³/an</span></p>
+      <p><strong>Eau économisée :</strong> <span style="color: green;">${formatSwiss(savedWater)} m³/an</span></p>
       <p><strong>Coût total après réduction :</strong> <span style="color: green;">CHF ${formatSwiss(totalCost)}</span></p>
       <p>Consommation mensuelle moyenne : ${formatSwiss(total / 12)} m³/mois</p>
       <p>Coût mensuel : CHF ${formatSwiss(monthlyCost)}</p>
