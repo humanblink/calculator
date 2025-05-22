@@ -118,7 +118,7 @@ function calculateWaterUse() {
       
       <p>
       <strong>Sources :</strong><br>
-      <span class="source-link"><a href="https://www.ssige.ch/fr/eau/consommation" target="_blank">SSIGE</a></span> - Société Suisse de l'Industrie du Gaz et des Eaux<br>
+      <span class="source-link"><a href="https://www.svgw.ch/fr/eau/statistique-de-leau/" target="_blank">SSIGE</a></span> - Société Suisse de l'Industrie du Gaz et des Eaux<br>
       <span class="source-link"><a href="https://www.ge.ch/statistique/domaines/welcome.asp?id=02" target="_blank">OCSTAT</a></span> - Office cantonal de la statistique<br>
       <span class="source-link"><a href="https://www.bafu.admin.ch/bafu/fr/home/themes/eaux.html" target="_blank">OFEV</a></span> - Office fédéral de l'environnement
       </p>
