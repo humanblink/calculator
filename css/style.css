@@ -23,7 +23,7 @@
 
 :root {
   --primary: #0288d1;         /* A more vibrant blue */
-  --primary-light: #b3e5fc;   /* Light blue for backgrounds */
+  --primary-light: #ffffff;   /* White for for backgrounds */
   --primary-dark: #01579b;    /* Dark blue for headers */
   --accent: #26a69a;          /* Teal accent */
   --text: #263238;            /* Dark blue-gray for text */
@@ -36,7 +36,7 @@
 
 /* Base Styles */
 body {
-  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: var(--background);
   margin: 0;
   padding: 20px;
