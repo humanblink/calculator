@@ -1,24 +1,25 @@
 /* Enhanced Water Calculator - style.css
  * Author: Original by HUMANBLINK Innovation, enhanced by Claude
- * Version: 2.2.1
- * Date: 2025-05-16
+ * Version: 2.3.0
+ * Date: 2025-05-26
  * Changes: 
- * - 2.0.1 (2025-05-15 14:38): Comprehensive visual redesign with improved colors, typography, and responsive elements
- * - 2.0.2 (2025-05-15 14:45): Updated cost calculator output styling - specified bold text and color coding for key figures
- * - 2.0.3 (2025-05-15 14:52): Repositioned "Coût total après réduction" line to appear immediately after "Consommation totale après réduction"
- * - 2.0.4 (2025-05-15 15:22): Reduced spacing between lines in cost calculator output sections for better grouping
- * - 2.0.5 (2025-05-15 15:55): Standardized table styles across all calculators for consistency
- * - 2.0.6 (2025-05-15 16:05): Standardized input field sizes and layouts across all three calculator sections
- * - 2.0.7 (2025-05-15 16:15): Enhanced footnote styling with typewriter font and improved source formatting
- * - 2.0.7.1 (2025-05-16): Version increment for cache busting
- * - 2.0.8 (2025-05-16): Added title styling for new multi-line format with visual hierarchy
- * - 2.0.9 (2025-05-16): Reorganized input fields into single column layout and fixed month grid to 3 columns
- * - 2.0.10 (2025-05-16): Standardized spacing between input fields across all calculator sections
- * - 2.0.11 (2025-05-16): Added highlighted total cell styling for garden irrigation calculator
- * - 2.0.12 (2025-05-16): Added auto-populated field highlight animation
- * - 2.1.0 (2025-05-16): Added collapsible footnotes and company info header
- * - 2.2.0 (2025-05-16): Implemented dual placement design with compact header and footer
+ * - 2.3.0 (2025-05-26): Standardized all button colors to primary blue for consistency, performance maintained
  * - 2.2.1 (2025-05-16): Centered the compact header
+ * - 2.2.0 (2025-05-16): Implemented dual placement design with compact header and footer
+ * - 2.1.0 (2025-05-16): Added collapsible footnotes and company info header
+ * - 2.0.12 (2025-05-16): Added auto-populated field highlight animation
+ * - 2.0.11 (2025-05-16): Added highlighted total cell styling for garden irrigation calculator
+ * - 2.0.10 (2025-05-16): Standardized spacing between input fields across all calculator sections
+ * - 2.0.9 (2025-05-16): Reorganized input fields into single column layout and fixed month grid to 3 columns
+ * - 2.0.8 (2025-05-16): Added title styling for new multi-line format with visual hierarchy
+ * - 2.0.7.1 (2025-05-16): Version increment for cache busting
+ * - 2.0.7 (2025-05-15 16:15): Enhanced footnote styling with typewriter font and improved source formatting
+ * - 2.0.6 (2025-05-15 16:05): Standardized input field sizes and layouts across all three calculator sections
+ * - 2.0.5 (2025-05-15 15:55): Standardized table styles across all calculators for consistency
+ * - 2.0.4 (2025-05-15 15:22): Reduced spacing between lines in cost calculator output sections for better grouping
+ * - 2.0.3 (2025-05-15 14:52): Repositioned "Coût total après réduction" line to appear immediately after "Consommation totale après réduction"
+ * - 2.0.2 (2025-05-15 14:45): Updated cost calculator output styling - specified bold text and color coding for key figures
+ * - 2.0.1 (2025-05-15 14:38): Comprehensive visual redesign with improved colors, typography, and responsive elements
  */
 
 :root {
@@ -211,7 +212,7 @@ input[type="checkbox"] {
   max-width: 100%;
 }
 
-/* Buttons */
+/* Buttons - Updated v2.3.0: Standardized all buttons to primary blue */
 button {
   background-color: var(--primary);
   color: white;
@@ -235,12 +236,13 @@ button:active {
   transform: translateY(1px);
 }
 
+/* Updated v2.3.0: Removed separate styling for btn-calculate - now uses same primary blue */
 .btn-calculate {
-  background-color: var(--accent);
+  background-color: var(--primary);
 }
 
 .btn-calculate:hover {
-  background-color: #00897b;
+  background-color: var(--primary-dark);
 }
 
 button::before {
@@ -542,11 +544,11 @@ button::before {
 }
 
 /* Compact header styling - Version 1.0.1 - Date: 2025-05-16 */
-/* Updated to move right the header content */
+/* Updated to right-align the header content */
 .compact-header {
   display: flex;
-  align-items: right;
-  justify-content: right; /* Move right the content horizontally */
+  align-items: center;
+  justify-content: flex-end; /* Right-align the content horizontally */
   padding: 8px 12px;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
@@ -556,7 +558,7 @@ button::before {
 
 .compact-header .company-logo {
   display: flex;
-  align-items: right;
+  align-items: center;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--primary-dark);
@@ -580,7 +582,7 @@ button::before {
   color: var(--primary);
   font-size: 1rem;
   display: flex;
-  align-items: right;
+  align-items: center;
 }
 
 .compact-header .product-name .product-icon {
