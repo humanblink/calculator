@@ -548,7 +548,7 @@ button::before {
   align-items: right;
   justify-content: right; /* Move right the content horizontally */
   padding: 8px 12px;
-  background-color: #f5f7f8;
+  background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
   margin-bottom: 1rem;
   border-radius: 6px;
