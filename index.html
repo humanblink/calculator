@@ -1,46 +1,52 @@
-<!-- index.html - Final Water Calculator - v1.9.1 -->
+<!-- index.html - Final Water Calculator - v1.9.13 -->
 <!-- Author: HUMANBLINK Innovation -->
-<!-- Updated: 2025-05-26 -->
-<!-- Changes in v1.9.1: 
-     - Added Plausible analytics tracking script
-     - Updated CSS version reference to 2.3.0 for button color standardization
-     - Performance and usability maintained
+<!-- Version: 1.9.13 -->
+<!-- Updated: 2025-06-05 -->
+<!-- Changes in v1.9.13: 
+     - Updated main subtitle color to match section headers (#013bb8)
+     - Further reduced Smart Water logo size and fixed SVG sizing issues
+     - Removed dashed line between footer disclaimer and copyright
+     - Applied consistent container styling to footer with rounded corners
+     - Standardized Cost section "Base de Calcul" to match other sections
+     - Updated CSS version reference to 3.13.0
+     - Maintained all existing functionality and accessibility
 -->
-<!-- Previous changes in v1.9: 
-     - Implemented dual placement with minimal header and detailed footer
-     - Updated cost calculator label to "Économie par arrosage intelligent (%)"
-     - Added copyright information
-     - Updated CSS version reference to 2.2.0
+<!-- Previous changes in v1.9.11: 
+     - Consolidated all blue colors to align with HUMANBLINK brand blue #014eeb
+     - Reduced from 14 different blues to 5 blues (65% reduction)
+     - Improved brand consistency across all interface elements
+     - Updated CSS version reference to 3.11.0
+     - Maintained all existing functionality and accessibility
 -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculateur Final de l'Eau</title>
-  <link rel="stylesheet" href="css/style.css?v=2.3.0">
+  <title>EcoAqua - Calculateur d'Empreinte Hydrique</title>
+  
+  <!-- Google Fonts - Performance Optimized - Inter Only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css?v=3.13.0">
+  
   <!-- Plausible Analytics -->
   <script defer data-domain="humanblink.github.io/calculator/index.html" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
   <div class="container">
-    <!-- Compact Header -->
-    <div class="compact-header">
-      <div class="company-logo">
-        <img src="img/humanblink-logo.png" alt="HUMANBLINK" height="24">
-        HUMANBLINK
+    <!-- Smart Water Header with SVG Logo -->
+    <header class="smart-water-header">
+      <div class="logo-section">
+        <!-- SVG Logo containing droplets and "Smart Water" title -->
+        <img src="img/smart-water-logo.svg" alt="Smart Water Logo" class="smart-water-svg">
       </div>
-      <div class="separator"></div>
-      <div class="product-name">
-        <span class="product-icon">💧</span> EcoAqua
-      </div>
-    </div>
-
-    <h1>
-      <span class="title-main">💧 EcoAqua</span><br>
-      <span class="title-sub">Calculateur d'Empreinte Hydrique</span><br>
-      <span class="title-region">Région Genève</span>
-    </h1>
+      <!-- Text subtitles preserved as HTML for maintainability -->
+      <h2 class="main-subtitle">Calculateur d'empreinte hydrique</h2>
+      <h3 class="region-subtitle">Région Ville de Genève</h3>
+    </header>
 
     <!-- Section 1: Garden Irrigation Calculator -->
     <section id="garden-section" class="module-section">
@@ -99,6 +105,7 @@
         </label>
       </div>
 
+      <!-- Restored Original Month Selection Layout -->
       <div class="month-selection">
         <label>Mois sélectionnés :</label>
         <div class="season-selection">
@@ -187,20 +194,17 @@
       <div class="results" id="output"></div>
     </section>
 
-    <!-- Footer with detailed information -->
+    <!-- Footer with updated container styling and structure -->
     <footer class="page-footer">
-      <div class="footer-row">
+      <div class="footer-content">
         <div class="footer-company">
           <img src="img/humanblink-logo.png" alt="HUMANBLINK" height="18">
-          HUMANBLINK Innovation
         </div>
-        <div class="footer-version">v1.9.1 (2025-05-26)</div>
-      </div>
-      <div class="footer-row">
+        <div class="footer-version">v1.9.13</div>
         <div class="footer-disclaimer">Utilisation à des fins d'évaluation uniquement</div>
-      </div>
-      <div class="footer-copyright">
-        © 2025 HUMANBLINK Innovation - Chemin de la Chênaie 5A, 1293 Bellevue, Suisse - Tous droits réservés
+        <div class="footer-copyright">
+          © 2025 HUMANBLINK Innovation - Tous droits réservés
+        </div>
       </div>
     </footer>
   </div>
@@ -208,7 +212,7 @@
   <!-- Scripts with version parameters to prevent caching -->
   <script src="js/garden.js?v=2.1.6"></script>
   <script src="js/building.js?v=2.3.3"></script>
-  <script src="js/cost.js?v=2.8.3"></script>
+  <script src="js/cost.js?v=2.10.0"></script>
   <script src="js/footnotes.js?v=1.0.2"></script>
   
   <!-- New JavaScript for growing season selection -->
@@ -226,7 +230,7 @@
   
   <!-- Diagnostic script to check if JS functions are loaded -->
   <script>
-    console.log("Checking if JS files are loaded:");
+    console.log("EcoAqua v1.9.13 - Standardized Colors & Footer Styling - Checking JS files:");
     console.log("garden.js loaded:", typeof calculateIrrigation === "function");
     console.log("building.js loaded:", typeof calculateWaterUse === "function"); 
     console.log("cost.js loaded:", typeof calculateCost === "function");
