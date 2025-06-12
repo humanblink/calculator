@@ -1,11 +1,9 @@
-// Version JS 2.1.6 - Auteur : HUMANBLINK Innovation - Date : 2025-05-16
-// Changes in v2.1: Added "Base de Calcul" footnote section to match other calculators
-// Changes in v2.1.1: Version increment for cache busting, fixed function declaration
-// Changes in v2.1.2: Updated to match new month grid layout and growing season selection
-// Changes in v2.1.3: Enhanced results table with units in headers and standardized total row
-// Changes in v2.1.4: Added Vol/arros. total, made only Besoin total bold
-// Changes in v2.1.5: Added global variable to store total water need for cost calculator
-// Changes in v2.1.6: Fixed decimal precision in stored totalNeed value
+// Version JS 2.1.7 - Auteur : HUMANBLINK Innovation - Date : 2025-06-05
+// Changes in v2.1.7: Updated source links as requested
+// - Updated MétéoSuisse link to OpenData documentation
+// - Updated OFEV link to specific water data page
+// - Maintained all existing functionality and calculations
+// Previous changes in v2.1.6: Fixed decimal precision in stored totalNeed value
 
 // Create global variable to store garden irrigation total
 window.gardenTotalNeed = 0;
@@ -146,7 +144,7 @@ function calculateIrrigation() {
   </tr></tfoot>`;
   resultHTML += '</table>';
 
-  // Add the Base de Calcul section
+  // Add the Base de Calcul section with updated source links
   const calculationBaseHTML = `
   <div class="calculation-base">
     <h4>Base de Calcul :</h4>
@@ -171,9 +169,9 @@ function calculateIrrigation() {
     
     <p>
     <strong>Sources :</strong><br>
-    <span class="source-link"><a href="https://www.meteosuisse.admin.ch" target="_blank">MétéoSuisse</a></span> - Données de précipitations et climatiques<br>
+    <span class="source-link"><a href="https://opendatadocs.meteoswiss.ch/fr/a-data-groundbased" target="_blank">MétéoSuisse</a></span> - Données de précipitations et climatiques<br>
     <span class="source-link"><a href="https://www.fao.org/land-water/databases-and-software/crop-information/fr/" target="_blank">FAO</a></span> - Coefficients culturaux et évapotranspiration<br>
-    <span class="source-link"><a href="https://www.bafu.admin.ch/bafu/fr/home/themes/eaux.html" target="_blank">OFEV</a></span> - Directives pour l'économie d'eau
+    <span class="source-link"><a href="https://www.bafu.admin.ch/bafu/fr/home/themes/eaux/donnees-et-cartes.html" target="_blank">OFEV</a></span> - Directives pour l'économie d'eau
     </p>
   </div>
   `;

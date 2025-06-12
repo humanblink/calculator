@@ -1,7 +1,7 @@
-// Version JS 2.11.0 - Auteur : HUMANBLINK Innovation - Date : 2025-06-05
-// Changes in v2.11.0: Fixed "Base de Calcul" styling to match Garden and Building sections
-// - Replaced all <span class="footnote-title"> with <strong> tags
-// - Standardized formatting and structure across all three calculators
+// Version JS 2.15.0 - Auteur : HUMANBLINK Innovation - Date : 2025-06-05
+// Changes in v2.15.0: Moved TVA and Prix/m³ text under Remarques section
+// - Reorganized text layout for better logical grouping
+// - TVA and pricing details now appear with other remarks
 // - Maintained all existing functionality and calculations
 // Previous changes in v2.9.0: Improved results page layout with numbered lists and better structure
 
@@ -158,7 +158,6 @@ function calculateCost() {
       <h4>Base de Calcul :</h4>
       
       <p>
-      Tarification:<br>
       Abonnement annuel fixe : CHF ${formatSwiss(fixed)}<br>
       Tranche tarifaire appliquée : ${tierUsed.upTo === Infinity ? ">" + formatSwiss(tiers[tiers.length-2].upTo) : "≤" + formatSwiss(tierUsed.upTo)} m³<br>
       Prix unitaire : CHF ${formatSwiss(tierUsed.unitPrice)}/m³<br>
@@ -166,25 +165,24 @@ function calculateCost() {
       </p>
       
       <p>
-      Détails du coût :<br>
+      <strong>Détails du coût :</strong><br>
       Coût variable (eau utilisée) : CHF ${formatSwiss(cost)}<br>
       Abonnement annuel fixe : CHF ${formatSwiss(fixed)}
       </p>
       
       <p>
-      Sources :<br>
-      <span class="source-link"><a href="https://ww2.sig-ge.ch/particuliers/offres/eau" target="_blank">SIG Genève</a></span> - Données tarifaires 2025<br>
-      <span class="source-link"><a href="https://www.ge.ch/document/eau-tarifs" target="_blank">Canton de Genève</a></span> - Règlements sur les eaux<br>
-      <span class="source-link"><a href="https://www.bafu.admin.ch/bafu/fr/home/themes/eaux.html" target="_blank">OFEV</a></span> - Office fédéral de l'environnement<br>
-      TVA non incluse.<br>
-      Prix/m³ inclut : eau potable, traitement eaux usées, réseau secondaire, redevance fédérale.
+      <strong>Sources :</strong><br>
+      <span class="source-link"><a href="https://ww2.sig-ge.ch/particuliers/offres/tarifs-reglements" target="_blank">SIG Genève</a></span> - Données tarifaires 2025<br>
+      <span class="source-link"><a href="https://ge.ch/grandconseil/data/texte/M02860A.pdf" target="_blank">Canton de Genève</a></span> - En 2022, hydratons notre agriculture ! 
       </p>
       
       <p>
-      Remarques :<br>
+      <strong>Remarques :</strong><br>
       Ce calcul suppose un profil "particulier". Pour les entreprises ou collectivités, les tarifs peuvent varier.<br>
       La première tranche (0–100 m³) est incluse dans l'abonnement fixe sans surcoût.<br>
-      Les réductions simulées sont indicatives et doivent être validées par des données réelles de capteurs.
+      Les réductions simulées sont indicatives et doivent être validées par des données réelles de capteurs.<br>
+      TVA non incluse.<br>
+      Prix/m³ inclut : eau potable, traitement eaux usées, réseau secondaire, redevance fédérale.
       </p>
     </div>
   `;

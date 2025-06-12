@@ -1,0 +1,319 @@
+<!-- index.html - Final Water Calculator - v1.9.16 -->
+<!-- Author: HUMANBLINK Innovation -->
+<!-- Version: 1.9.16 -->
+<!-- Updated: 2025-06-11 16:15 -->
+<!-- Changes in v1.9.16: 
+     - Added Print-to-PDF download functionality with HUMANBLINK branding
+     - Professional PDF layout with logo, contact info, and clean formatting
+     - Download button positioned prominently after all calculations
+     - Print-only elements hidden from screen view
+     - Updated CSS version reference to 3.16.0
+     - Maintained all existing functionality and accessibility
+-->
+<!-- Previous changes in v1.9.15: 
+     - Added feedback section with link to HUMANBLINK comments page
+     - Encouraging text for user feedback to improve calculator
+     - Opens in new tab to maintain user session
+     - Styled consistently with other module sections
+     - Maintained all existing functionality and accessibility
+-->
+<!-- Previous changes in v1.9.14: 
+     - Enhanced Building Water Calculator inputs with slider and explanatory text
+     - Converted adjustment dropdown to range slider (-100% to +100%, step 10%)
+     - Made attendance field visible for ALL building types (not just Business)
+     - Added explanatory text under adjustment and attendance inputs
+     - Updated CSS version reference to 3.15.0
+     - Maintained all existing functionality and accessibility
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoAqua - Calculateur d'Empreinte Hydrique</title>
+  
+  <!-- Google Fonts - Performance Optimized - Inter Only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css?v=3.16.0">
+  
+  <!-- Plausible Analytics -->
+  <script defer data-domain="humanblink.github.io/calculator/index.html" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <!-- Print-only header with HUMANBLINK branding (hidden on screen) -->
+  <div class="print-header" style="display: none;">
+    <img src="img/humanblink-logo.png" alt="HUMANBLINK Innovation" class="print-logo">
+    <div class="print-title">EcoAqua - Calculateur d'Empreinte Hydrique</div>
+    <div class="print-subtitle">Région Ville de Genève</div>
+    <div class="print-date">Rapport généré le <span id="print-date"></span></div>
+  </div>
+
+  <div class="container">
+    <!-- Smart Water Header with SVG Logo -->
+    <header class="smart-water-header">
+      <div class="logo-section">
+        <!-- SVG Logo containing droplets and "Smart Water" title -->
+        <img src="img/smart-water-logo.svg" alt="Smart Water Logo" class="smart-water-svg">
+      </div>
+      <!-- Text subtitles preserved as HTML for maintainability -->
+      <h2 class="main-subtitle">Calculateur d'empreinte hydrique</h2>
+      <h3 class="region-subtitle">Région Ville de Genève</h3>
+    </header>
+
+    <!-- Section 1: Garden Irrigation Calculator -->
+    <section id="garden-section" class="module-section">
+      <h2>🌿 Arrosage des Espaces Verts</h2>
+      <div class="input-grid">
+        <label>Surface du jardin (m²):
+          <input type="number" id="area" min="10" max="2000">
+        </label>
+        <label>Type de plante:
+          <select id="plantType">
+            <option>Gazon</option>
+            <option>Jardin mixte</option>
+            <option>Légumes</option>
+            <option>Plantes ornementales</option>
+          </select>
+        </label>
+        <label>Exposition au soleil:
+          <select id="sun">
+            <option>Ensoleillement total</option>
+            <option>Mi-ombre</option>
+            <option>Ombre majoritaire</option>
+          </select>
+        </label>
+        <label>Type de sol:
+          <select id="soilType">
+            <option>Argileux</option>
+            <option>Limoneux</option>
+            <option>Sableux</option>
+            <option>Tourbeux</option>
+          </select>
+        </label>
+        <label>Méthode:
+          <select id="irrigationType">
+            <option>Arrosage manuel</option>
+            <option>Goutte-à-goutte</option>
+            <option>Sprinkler</option>
+          </select>
+        </label>
+        <label>Efficacité (%):
+          <select id="efficiency">
+            <option>60</option>
+            <option>75</option>
+            <option>90</option>
+          </select>
+        </label>
+        <label>Fréquence d'arrosage:
+          <select id="frequency">
+            <option>1 fois par semaine</option>
+            <option>Chaque jour</option>
+            <option>Chaque 2 jours</option>
+            <option>Chaque 3 jours</option>
+          </select>
+        </label>
+        <label>Ajuster pour arrosage avec capteurs de sols:
+          <input type="checkbox" id="sensorAdjustment">
+        </label>
+      </div>
+
+      <!-- Restored Original Month Selection Layout -->
+      <div class="month-selection">
+        <label>Mois sélectionnés :</label>
+        <div class="season-selection">
+          <input type="checkbox" id="growingSeason" name="season">
+          <label for="growingSeason">Sélectionner la saison de croissance (Avril-Septembre)</label>
+        </div>
+        <div class="month-group">
+          <!-- Row 1: January-March -->
+          <div class="month-option"><input type="checkbox" id="jan" name="month"><label for="jan">Janvier</label></div>
+          <div class="month-option"><input type="checkbox" id="feb" name="month"><label for="feb">Février</label></div>
+          <div class="month-option"><input type="checkbox" id="mar" name="month"><label for="mar">Mars</label></div>
+          
+          <!-- Row 2: April-June -->
+          <div class="month-option"><input type="checkbox" id="apr" name="month"><label for="apr">Avril</label></div>
+          <div class="month-option"><input type="checkbox" id="may" name="month"><label for="may">Mai</label></div>
+          <div class="month-option"><input type="checkbox" id="jun" name="month"><label for="jun">Juin</label></div>
+          
+          <!-- Row 3: July-September -->
+          <div class="month-option"><input type="checkbox" id="jul" name="month"><label for="jul">Juillet</label></div>
+          <div class="month-option"><input type="checkbox" id="aug" name="month"><label for="aug">Août</label></div>
+          <div class="month-option"><input type="checkbox" id="sep" name="month"><label for="sep">Septembre</label></div>
+          
+          <!-- Row 4: October-December -->
+          <div class="month-option"><input type="checkbox" id="oct" name="month"><label for="oct">Octobre</label></div>
+          <div class="month-option"><input type="checkbox" id="nov" name="month"><label for="nov">Novembre</label></div>
+          <div class="month-option"><input type="checkbox" id="dec" name="month"><label for="dec">Décembre</label></div>
+        </div>
+      </div>
+
+      <button class="btn-calculate" onclick="calculateIrrigation()">Calculer</button>
+      <div class="section" id="results"></div>
+    </section>
+
+    <!-- Section 2: Building Water Calculator - ENHANCED -->
+    <section id="building-section" class="module-section">
+      <h2>🏢 Consommation Eau des Bâtiments</h2>
+      <div class="input-grid">
+        <label for="useCase">Type d'usage :</label>
+        <select id="useCase">
+          <option value="Households">Ménages</option>
+          <option value="Schools / Universities">Écoles / Universités</option>
+          <option value="Municipal Buildings">Bâtiments Municipaux</option>
+          <option value="Sport Clubs">Clubs de Sport</option>
+          <option value="Business Buildings">Bureaux</option>
+        </select>
+        
+        <label for="population">Nombre de personnes :</label>
+        <input type="number" id="population" value="4">
+        
+        <!-- ENHANCED: Slider instead of dropdown -->
+        <label for="adjustment">Ajustement (%) :</label>
+        <div class="range-container">
+          <input type="range" id="adjustment" step="10" min="-100" max="100" value="0">
+          <div class="range-value-display" id="adjustmentDisplay">0%</div>
+        </div>
+        <small class="input-explanation">Réduit ou augmente la consommation typique pour les usagers du type de bâtiment donné. Par exemple, Ménages à Genève consomment 160 L/jour - 10% = 144 litres/jour</small>
+        
+        <!-- ENHANCED: Visible for ALL building types, not just Business -->
+        <label for="attendance">Taux d'occupation (%) :</label>
+        <div class="range-container">
+          <input type="range" id="attendance" step="10" min="-50" max="50" value="0">
+          <div class="range-value-display" id="attendanceDisplay">0%</div>
+        </div>
+        <small class="input-explanation">Ajuste l'occupation du bâtiment en raison du travail à distance, vacances, ou autres facteurs réduisant la présence</small>
+      </div>
+      <button onclick="calculateWaterUse()">Calculer</button>
+      <div id="buildingResults"></div>
+    </section>
+
+    <!-- Section 3: Water Cost Calculator -->
+    <section id="cost-section" class="module-section">
+      <h2>💰 Estimation du Coût (SIG)</h2>
+      <div class="input-grid">
+        <label>Consommation eau espaces verts (m³/an):
+          <input type="number" id="irrigation" min="0" step="0.01">
+        </label>
+        <label>Économie par arrosage intelligent (%):
+          <select id="reduction">
+            <option value="0">0%</option>
+            <option value="-10">-10%</option>
+            <option value="-20">-20%</option>
+            <option value="-30">-30%</option>
+            <option value="-40">-40%</option>
+            <option value="-50">-50%</option>
+          </select>
+        </label>
+        <label>Consommation eau bâtiment (m³/an):
+          <input type="number" id="building" min="0" step="0.01">
+        </label>
+      </div>
+      <button onclick="calculateCost()">Calculer le coût</button>
+      <div class="results" id="output"></div>
+    </section>
+
+    <!-- Section 4: Download Results Section -->
+    <section id="download-section" class="module-section">
+      <h2>📄 Télécharger le Rapport</h2>
+      <p>Obtenez un rapport PDF professionnel avec tous vos résultats de calcul, incluant les données d'arrosage, de consommation des bâtiments et d'estimation des coûts.</p>
+      <button type="button" onclick="downloadPDF()" id="download-btn">📄 Télécharger le Rapport PDF</button>
+      <p style="font-size: 0.85em; color: #666; margin-top: 12px; font-style: italic; line-height: 1.4;">
+        <strong>Avertissement :</strong> Ce calculateur fournit des estimations basées sur des données moyennes. 
+        Les consommations réelles peuvent varier selon les conditions spécifiques d'usage, 
+        les équipements installés et les comportements individuels. 
+        Pour des projets importants, nous recommandons une analyse détaillée.
+      </p>
+    </section>
+
+    <!-- Section 5: Feedback Section -->
+    <section id="feedback-section" class="module-section">
+      <h2>💬 Vos Commentaires</h2>
+      <p>Votre avis nous aide à améliorer EcoAqua ! Partagez vos suggestions, questions ou retours d'expérience pour que nous puissions continuer à développer des outils toujours plus utiles pour la gestion de l'eau à Genève.</p>
+      <a href="https://www.humanblink.ch/eco-aqua-comentaires" target="_blank" rel="noopener noreferrer">
+        <button type="button">Laisser un Commentaire</button>
+      </a>
+    </section>
+
+    <!-- Footer with updated container styling and structure -->
+    <footer class="page-footer">
+      <div class="footer-content">
+        <div class="footer-company">
+          <img src="img/humanblink-logo.png" alt="HUMANBLINK" height="18">
+        </div>
+        <div class="footer-version">v1.9.16</div>
+        <div class="footer-disclaimer">Utilisation à des fins d'évaluation uniquement</div>
+        <div class="footer-copyright">
+          © 2025 HUMANBLINK Innovation - Tous droits réservés
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts with version parameters to prevent caching -->
+  <script src="js/garden.js?v=2.1.7"></script>
+  <script src="js/building.js?v=2.6.0"></script>
+  <script src="js/cost.js?v=2.15.0"></script>
+  <script src="js/footnotes.js?v=1.0.2"></script>
+  <script src="js/download.js?v=1.0.0"></script>
+  
+  <!-- Enhanced JavaScript for growing season selection and slider functionality -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Growing season checkbox functionality
+      document.getElementById('growingSeason').addEventListener('change', function() {
+        const growingMonths = ['apr', 'may', 'jun', 'jul', 'aug', 'sep'];
+        growingMonths.forEach(month => {
+          document.getElementById(month).checked = this.checked;
+        });
+      });
+      
+      // NEW: Adjustment slider functionality
+      const adjustmentSlider = document.getElementById('adjustment');
+      const adjustmentDisplay = document.getElementById('adjustmentDisplay');
+      
+      // Update display when adjustment slider changes
+      adjustmentSlider.addEventListener('input', function() {
+        adjustmentDisplay.textContent = this.value + '%';
+        // Position the display above the slider thumb
+        const percent = (this.value - this.min) / (this.max - this.min);
+        const offset = percent * (this.offsetWidth - 20) + 10; // 20px is thumb width
+        adjustmentDisplay.style.left = offset + 'px';
+      });
+      
+      // Initialize adjustment display
+      adjustmentDisplay.textContent = adjustmentSlider.value + '%';
+      
+      // NEW: Attendance slider functionality
+      const attendanceSlider = document.getElementById('attendance');
+      const attendanceDisplay = document.getElementById('attendanceDisplay');
+      
+      // Update display when attendance slider changes
+      attendanceSlider.addEventListener('input', function() {
+        const value = parseInt(this.value);
+        attendanceDisplay.textContent = (value >= 0 ? '+' : '') + value + '%';
+        // Position the display above the slider thumb
+        const percent = (this.value - this.min) / (this.max - this.min);
+        const offset = percent * (this.offsetWidth - 20) + 10; // 20px is thumb width
+        attendanceDisplay.style.left = offset + 'px';
+      });
+      
+      // Initialize attendance display
+      const initialAttendance = parseInt(attendanceSlider.value);
+      attendanceDisplay.textContent = (initialAttendance >= 0 ? '+' : '') + initialAttendance + '%';
+    });
+  </script>
+  
+  <!-- Diagnostic script to check if JS functions are loaded -->
+  <script>
+    console.log("EcoAqua v1.9.16 - Print-to-PDF Download Added - Checking JS files:");
+    console.log("garden.js loaded:", typeof calculateIrrigation === "function");
+    console.log("building.js loaded:", typeof calculateWaterUse === "function"); 
+    console.log("cost.js loaded:", typeof calculateCost === "function");
+    console.log("footnotes.js loaded:", document.querySelectorAll('.calculation-base').length > 0);
+    console.log("download.js loaded:", typeof downloadPDF === "function");
+  </script>
+</body>
+</html>

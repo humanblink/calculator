@@ -1,32 +1,22 @@
 /* Enhanced Water Calculator - style.css
  * Author: Original by HUMANBLINK Innovation, enhanced by Claude
- * Version: 3.13.0 - Color Standardization & Footer Container Styling
- * Date: 2025-06-05
+ * Version: 3.16.0 - Print-to-PDF Functionality
+ * Date: 2025-06-11 16:15
  * 
- * ✅ READY FOR DEPLOYMENT - EcoAqua v1.9.13 CSS File
+ * ✅ READY FOR DEPLOYMENT - EcoAqua v1.9.16 CSS File
  * 
- * Changes in v3.13.0:
- * - Updated main subtitle color to match section headers (#013bb8)
- * - Further reduced Smart Water logo size and fixed SVG sizing issues
- * - Removed dashed line between footer disclaimer and copyright
- * - Applied consistent container styling to footer with module section appearance
- * - Standardized Cost section "Base de Calcul" formatting to match other sections
- * - ALL functionality and calculations remain completely unchanged
+ * Changes in v3.16.0:
+ * - Added comprehensive print styles for PDF generation
+ * - Print-only HUMANBLINK branding and contact information
+ * - Professional PDF layout optimized for A4 format
+ * - Hidden interactive elements in print view
+ * - Maintained all existing functionality for screen view
  * 
- * Changes in v3.12.0:
- * - Standardized to Inter font throughout (removed Be Vietnam Pro references)
- * - Reduced Smart Water logo to 300px max-width
- * - Centered all footer content and simplified layout
- * - Removed date/time from version display
- * - Removed duplicate "HUMANBLINK Innovation" text from footer
- * - ALL functionality and calculations remain completely unchanged
- * 
- * Previous changes in v3.11.0:
- * - Consolidated all blue colors to align with HUMANBLINK brand blue #014eeb
- * - Reduced from 14 different blues to 5 blues for better brand consistency
- * - Updated all UI elements to use HUMANBLINK blue color family
- * - Removed legacy droplet colors no longer needed
- * - Maintained accessibility and contrast requirements
+ * Previous changes in v3.15.0:
+ * - Added .input-explanation class for helpful text under inputs
+ * - Enhanced range slider styling for adjustment percentage
+ * - Added responsive design for new input elements
+ * - Improved visual hierarchy for form elements
  */
 
 :root {
@@ -193,7 +183,7 @@ h3 {
   margin-left: 15px;
 }
 
-/* Form Elements - Restored original widths */
+/* Form Elements - Enhanced with new input types */
 label {
   display: block;
   margin-bottom: 4px;
@@ -203,6 +193,7 @@ label {
 }
 
 input[type="number"], 
+input[type="range"],
 select {
   width: 100%;
   padding: 10px 12px;
@@ -217,7 +208,108 @@ select {
   font-family: 'Inter', sans-serif;
 }
 
+/* Range Slider Specific Styling - NEW in v3.15.0 */
+input[type="range"] {
+  height: 6px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  width: 100%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+/* Range slider container for better positioning */
+.range-container {
+  position: relative;
+  margin: 8px 0 16px 0;
+}
+
+.range-value-display {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Input Explanations - NEW in v3.15.0 */
+.input-explanation {
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 0.85em;
+  display: block;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Special styling for important explanations */
+.input-explanation.highlight {
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 3px solid var(--primary-light);
+  font-style: normal;
+  color: var(--text);
+}
+
 input[type="number"]:focus,
+input[type="range"]:focus,
 select:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(2, 136, 209, 0.15);
@@ -242,11 +334,11 @@ input[type="checkbox"] {
   box-shadow: 0 0 0 2px rgba(1, 78, 235, 0.1);
 }
 
-/* Input fields - Restored original compact layout */
+/* Input fields - Enhanced with better spacing for explanations */
 .input-grid {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 12px; /* Increased from 9px to accommodate explanations */
   margin-bottom: 20px;
   max-width: 320px;
 }
@@ -259,11 +351,12 @@ input[type="checkbox"] {
 }
 
 .module-section input[type="number"],
+.module-section input[type="range"],
 .module-section select {
   margin-bottom: 0;
 }
 
-/* Building Water Calculator Inputs */
+/* Building Water Calculator Inputs - Enhanced */
 #building-section label,
 #cost-section label {
   display: flex;
@@ -275,7 +368,7 @@ input[type="checkbox"] {
 #cost-section .input-grid {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 12px; /* Increased from 9px */
   margin-bottom: 20px;
   max-width: 320px;
 }
@@ -699,9 +792,9 @@ button::before {
   font-size: 0.75rem;
 }
 
-/* Legacy footer styles - kept for compatibility but overridden */
+/* Legacy footer styles - completely removed in v3.13.0 */
 .footer-row {
-  display: none; /* Hide old row-based layout */
+  display: none !important; /* Force hide old row-based layout */
 }
 
 /* Specific Elements */
@@ -819,6 +912,51 @@ span[style*="color: green"] {
   font-weight: 700;
 }
 
+/* Cost Section Footnote Formatting Fix - Added in v3.14.0 */
+/* Ensure Cost section "Base de Calcul" matches Garden and Building sections exactly */
+#output .calculation-base {
+  font-size: 0.85rem !important;
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  line-height: 1.4 !important;
+  background-color: #f5f7f8 !important;
+  padding: 16px 20px !important;
+  border-radius: 8px !important;
+  margin-top: 25px !important;
+  border-left: 4px solid #b3e5fc !important;
+}
+
+#output .calculation-base h4 {
+  color: var(--primary-dark) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+}
+
+#output .calculation-base p {
+  margin-bottom: 16px !important;
+  font-size: 0.85rem !important;
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  line-height: 1.4 !important;
+}
+
+#output .calculation-base strong {
+  color: var(--primary-dark) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  display: block !important;
+  margin-bottom: 5px !important;
+}
+
+#output .calculation-base a {
+  color: var(--primary) !important;
+  text-decoration: none !important;
+}
+
+#output .calculation-base a:hover {
+  text-decoration: underline !important;
+}
+
 /* Responsive adjustments for result items */
 @media (max-width: 768px) {
   .result-item {
@@ -835,6 +973,17 @@ span[style*="color: green"] {
     margin-left: 0;
     margin-top: var(--space-1, 0.25rem);
     font-weight: 600;
+  }
+  
+  /* Range slider adjustments for mobile */
+  .range-container {
+    margin: 12px 0 20px 0;
+  }
+  
+  .input-explanation {
+    font-size: 0.8em;
+    margin-top: 6px;
+    margin-bottom: 10px;
   }
 }
 
@@ -967,5 +1116,299 @@ span[style*="color: green"] {
   .calculation-base {
     font-size: 0.8rem;
     padding: 12px 16px;
+  }
+}
+
+/* Print Styles for PDF Generation - NEW in v3.16.0 */
+@media print {
+  /* Reset margins and ensure full page usage */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+  
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #000 !important;
+    background: white !important;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Hide interactive elements and navigation */
+  .smart-water-header,
+  button,
+  input,
+  select,
+  .input-grid,
+  .month-selection,
+  .range-container,
+  .input-explanation,
+  .season-selection,
+  .month-group,
+  .page-footer,
+  #feedback-section,
+  .btn-calculate {
+    display: none !important;
+  }
+  
+  /* Hide section headers emoji and decorative elements */
+  .module-section h2::after {
+    display: none !important;
+  }
+  
+  /* Container adjustments for print */
+  .container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Module sections styling for print */
+  .module-section {
+    background: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 20pt 0 !important;
+    margin-bottom: 20pt !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Print header with HUMANBLINK branding */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 30pt;
+    padding-bottom: 15pt;
+    border-bottom: 2pt solid var(--primary);
+  }
+  
+  .print-logo {
+    display: block !important;
+    margin: 0 auto 10pt auto;
+    height: 40pt;
+    width: auto;
+  }
+  
+  .print-title {
+    display: block !important;
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--primary) !important;
+    margin: 10pt 0 5pt 0;
+  }
+  
+  .print-subtitle {
+    display: block !important;
+    font-size: 12pt;
+    color: #666 !important;
+    margin: 0 0 5pt 0;
+  }
+  
+  .print-date {
+    display: block !important;
+    font-size: 10pt;
+    color: #666 !important;
+    margin: 5pt 0 0 0;
+  }
+  
+  /* Section headers for print */
+  .module-section h2 {
+    font-size: 14pt !important;
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+    margin: 20pt 0 10pt 0 !important;
+    page-break-after: avoid;
+  }
+  
+  /* Section headers - first section no top margin */
+  .module-section:first-of-type h2 {
+    margin-top: 0 !important;
+  }
+  
+  /* Results tables for print */
+  .result-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 10pt 0 15pt 0 !important;
+    page-break-inside: avoid;
+  }
+  
+  .result-table th {
+    background-color: var(--primary) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 8pt 6pt !important;
+    font-size: 10pt !important;
+    border: 1pt solid #ccc !important;
+  }
+  
+  .result-table td {
+    padding: 6pt !important;
+    font-size: 9pt !important;
+    border: 1pt solid #ccc !important;
+    text-align: left !important;
+  }
+  
+  .result-table tfoot td {
+    font-weight: 600 !important;
+    background-color: #f0f0f0 !important;
+  }
+  
+  .highlighted-total {
+    background-color: #e6f0ff !important;
+    border: 2pt solid var(--primary) !important;
+    font-weight: 700 !important;
+  }
+  
+  /* Results lists for cost calculator */
+  .results-list {
+    margin: 10pt 0 !important;
+  }
+  
+  .result-item {
+    display: flex !important;
+    padding: 6pt 8pt !important;
+    margin-bottom: 3pt !important;
+    border: 1pt solid #ddd !important;
+    background-color: #f9f9f9 !important;
+    page-break-inside: avoid;
+  }
+  
+  .result-item.highlight-red {
+    background-color: #ffeaea !important;
+    border-color: #d32f2f !important;
+  }
+  
+  .result-item.highlight-green {
+    background-color: #eafaea !important;
+    border-color: #2e7d32 !important;
+  }
+  
+  .item-number {
+    font-weight: 600 !important;
+    color: var(--primary) !important;
+    margin-right: 8pt !important;
+    min-width: 15pt !important;
+    font-size: 9pt !important;
+  }
+  
+  .item-text {
+    flex-grow: 1 !important;
+    font-size: 9pt !important;
+  }
+  
+  .item-value {
+    font-weight: 500 !important;
+    margin-left: 8pt !important;
+    font-size: 9pt !important;
+  }
+  
+  /* Calculation base (footnotes) styling for print */
+  .calculation-base {
+    background-color: #f8f8f8 !important;
+    border-left: 3pt solid #b3e5fc !important;
+    padding: 10pt 12pt !important;
+    margin: 15pt 0 20pt 0 !important;
+    font-size: 8pt !important;
+    line-height: 1.3 !important;
+    page-break-inside: avoid;
+  }
+  
+  .calculation-base h4 {
+    font-size: 10pt !important;
+    color: var(--primary) !important;
+    margin: 0 0 8pt 0 !important;
+    font-weight: 600 !important;
+  }
+  
+  .calculation-base p {
+    margin: 0 0 8pt 0 !important;
+    font-size: 8pt !important;
+  }
+  
+  .calculation-base strong {
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+    font-size: 8pt !important;
+  }
+  
+  .calculation-base a {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+  }
+  
+  /* Print footer with contact information */
+  .print-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0.8cm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 7pt;
+    color: #666 !important;
+    border-top: 1pt solid #ddd;
+    padding-top: 6pt;
+    background: white !important;
+    line-height: 1.3 !important;
+  }
+  
+  .print-contact {
+    display: block !important;
+    margin: 0 0 4pt 0;
+    font-size: 8pt;
+  }
+  
+  .print-disclaimer {
+    display: block !important;
+    font-style: italic;
+    color: #999 !important;
+    font-size: 7pt;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  /* Ensure content doesn't overlap footer */
+  body {
+    margin-bottom: 4cm !important;
+  }
+  
+  /* Page breaks */
+  .module-section {
+    page-break-before: avoid;
+    page-break-after: avoid;
+  }
+  
+  .result-table {
+    page-break-before: avoid;
+    page-break-after: avoid;
+  }
+  
+  h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  /* Hide toggle indicators and other interactive elements */
+  .toggle-indicator,
+  .calculation-content-item,
+  .input-grid,
+  .smart-water-svg {
+    display: none !important;
+  }
+  
+  /* Show all calculation content in print */
+  .calculation-base.collapsed .calculation-content-item,
+  .calculation-base.expanded .calculation-content-item {
+    display: block !important;
   }
 }

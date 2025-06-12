@@ -1,15 +1,14 @@
-// Version JS 2.3.3 - Auteur : HUMANBLINK Innovation - Date : 2025-05-16
-// Changes in v2.1: Added "📊 Résultats" title to match garden irrigation calculator styling
-// Changes in v2.2: Enhanced calculation base styling and added sources
-// Changes in v2.3: Updated Base de Calcul formatting to match Cost Calculator footnote style
-// Changes in v2.3.1: Version increment for cache busting, fixed function declaration
-// Changes in v2.3.2: Updated total line to match Garden table format with highlighted total
-// Changes in v2.3.3: Added global variable to store total consumption for cost calculator
+// Version JS 2.6.0 - Auteur : HUMANBLINK Innovation - Date : 2025-06-11 15:45
+// Changes in v2.6.0: Added Geneva canton working days calculation for Schools/Universities
+// - Schools/Universities now use 252 working days/year (Geneva canton working days excluding holidays)
+// - Sport Clubs continue using 104 visits/year (2 visits/week × 52 weeks)
+// - All other building types use 365 days/year
+// - Updated "Base de Calcul" section to show specific time periods for each building type
+// - More accurate calculations reflecting actual operational periods
+// Previous changes in v2.5.0: Enhanced functionality for all building types with universal attendance
 
 // Create global variable to store building water consumption total
 window.buildingTotalConsumption = 0;
-
-// Version JS 2.7 - Auteur : HUMANBLINK Innovation - Date : 2025-05-15
 
 const constants = {
   months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
@@ -51,10 +50,21 @@ function calculateWaterUse() {
   const months = constants.months;
 
   let annualTotal = 0;
-  let totalAnnualLiters = adjustedLiters * population * 365;
-  if (useCase === "Business Buildings") {
-    totalAnnualLiters *= attendance / 100;
+  let totalAnnualLiters;
+  
+  // ENHANCED: Different time periods for different building types
+  if (useCase === "Sport Clubs") {
+    const visitsPerYear = 2 * 52; // 2 visits/week × 52 weeks = 104 visits/year
+    totalAnnualLiters = adjustedLiters * population * visitsPerYear;
+  } else if (useCase === "Schools / Universities") {
+    const workingDaysPerYear = 252; // Geneva canton working days excluding holidays and weekends
+    totalAnnualLiters = adjustedLiters * population * workingDaysPerYear;
+  } else {
+    totalAnnualLiters = adjustedLiters * population * 365; // All other types use full year
   }
+  
+  // ENHANCED: Apply attendance to ALL building types, not just Business Buildings
+  totalAnnualLiters *= (100 + attendance) / 100;
 
   let tableRows = "";
   months.forEach((month, i) => {
@@ -95,6 +105,7 @@ function calculateWaterUse() {
     </table>
   `;
 
+  // Enhanced "Base de Calcul" section with comprehensive parameter information
   const summaryText = `
     <div class="calculation-base">
       <h4>Base de Calcul :</h4>
@@ -102,9 +113,11 @@ function calculateWaterUse() {
       <p>
       Type d'usage : ${useCase}<br>
       Population : ${formatLiters(population)}<br>
-      Consommation journalière de base : ${formatLiters(baseLiters)} L/jour/personne<br>
-      Ajustement utilisateur : ${formatM3(adjustment)}% → Ajustée à ${formatLiters(adjustedLiters)} L/jour/personne<br>
-      ${useCase === "Business Buildings" ? `Présence appliquée : ${formatM3(attendance)}%<br>` : ""}
+      Consommation journalière de base : ${formatLiters(baseLiters)} L/${useCase === "Sport Clubs" ? "visite" : "jour"}/personne<br>
+      ${useCase === "Sport Clubs" ? `Fréquence de visite : 2 visites/semaine = 104 visites/an<br>` : ""}
+      ${useCase === "Schools / Universities" ? `Jours d'école : 252 jours ouvrables/an (Genève, hors week-ends et jours fériés)<br>` : ""}
+      Ajustement de consommation : ${formatM3(adjustment)}% → Ajustée à ${formatLiters(adjustedLiters)} L/${useCase === "Sport Clubs" ? "visite" : "jour"}/personne<br>
+      Taux d'occupation appliqué : ${attendance >= 0 ? '+' : ''}${formatM3(attendance)}% → Facteur: ${formatM3((100 + attendance) / 100)}<br>
       Total annuel estimé : ${formatLiters(totalAnnualLiters)} L<br>
       Réparti mensuellement selon les profils saisonniers de Genève.
       </p>
@@ -112,15 +125,17 @@ function calculateWaterUse() {
       <p>
       <strong>Méthodologie :</strong><br>
       Le calcul se base sur des valeurs moyennes de consommation pour différents types d'usage.<br>
-      Les profils saisonniers ont été établis sur base de données historiques pour Genève.<br>
-      Un ajustement peut être appliqué pour tenir compte de spécificités locales.
+      ${useCase === "Sport Clubs" ? "Pour les clubs sportifs, la consommation est basée sur 2 visites par semaine par personne (104 visites/an).<br>" : ""}
+      ${useCase === "Schools / Universities" ? "Pour les écoles/universités, la consommation est basée sur 252 jours ouvrables annuels du canton de Genève.<br>" : ""}
+      L'ajustement de consommation modifie la consommation de base selon les spécificités du bâtiment.<br>
+      Le taux d'occupation ajuste la consommation totale selon la présence réelle des occupants.<br>
+      Les profils saisonniers ont été établis sur base de données historiques pour Genève.
       </p>
       
       <p>
       <strong>Sources :</strong><br>
       <span class="source-link"><a href="https://www.svgw.ch/fr/eau/statistique-de-leau/" target="_blank">SSIGE</a></span> - Société Suisse de l'Industrie du Gaz et des Eaux<br>
-      <span class="source-link"><a href="https://www.ge.ch/statistique/domaines/welcome.asp?id=02" target="_blank">OCSTAT</a></span> - Office cantonal de la statistique<br>
-      <span class="source-link"><a href="https://www.bafu.admin.ch/bafu/fr/home/themes/eaux.html" target="_blank">OFEV</a></span> - Office fédéral de l'environnement
+      <span class="source-link"><a href="https://www.ge.ch/statistique/domaines/welcome.asp?id=02" target="_blank">OCSTAT</a></span> - Office cantonal de la statistique
       </p>
     </div>
   `;
