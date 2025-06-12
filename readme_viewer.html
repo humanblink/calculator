@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoAqua - Documentation</title>
     <style>
-        /* GitHub-inspired styling with HUMANBLINK branding */
+        /* Reset and Base Styles - Matching Calculator Design */
         * {
             margin: 0;
             padding: 0;
@@ -13,175 +13,102 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #24292f;
-            background: #ffffff;
+            color: #333;
+            background: #f8f9fa;
             margin: 0;
         }
 
-        .container {
-            max-width: 1012px;
-            margin: 0 auto;
-            padding: 32px;
-        }
-
-        /* Header styling */
+        /* Header - Clean white design matching calculator */
         .header {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            background: white;
+            border-bottom: 2px solid #e9ecef;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+
+        .header-title {
+            color: #333;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .header-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        /* Back button matching calculator style */
+        .back-button {
+            background: #2563eb;
             color: white;
-            padding: 2rem;
-            margin: -32px -32px 32px -32px;
-            border-radius: 0 0 12px 12px;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+        .back-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
         }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
         }
 
-        /* Markdown content styling */
-        .markdown-content {
+        /* Content area */
+        .content-area {
             background: white;
             border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Headings */
-        h1, h2, h3, h4, h5, h6 {
-            margin-top: 24px;
-            margin-bottom: 16px;
-            font-weight: 600;
-            line-height: 1.25;
-            color: #1f2328;
-        }
-
-        h1 { font-size: 2rem; border-bottom: 1px solid #d1d9e0; padding-bottom: 10px; }
-        h2 { font-size: 1.5rem; border-bottom: 1px solid #d1d9e0; padding-bottom: 8px; }
-        h3 { font-size: 1.25rem; }
-        h4 { font-size: 1rem; }
-
-        /* Paragraphs */
-        p {
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-
-        /* Lists */
-        ul, ol {
-            margin-bottom: 16px;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 4px;
-        }
-
-        /* Code blocks */
-        pre {
-            background: #f6f8fa;
-            border-radius: 6px;
-            padding: 16px;
-            overflow-x: auto;
-            margin-bottom: 16px;
-            border: 1px solid #d1d9e0;
-        }
-
-        code {
-            background: #f6f8fa;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            font-size: 0.875rem;
-        }
-
-        pre code {
-            background: none;
-            padding: 0;
-        }
-
-        /* Tables */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 16px;
-            background: white;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #d1d9e0;
-        }
-
-        th {
-            background: #f6f8fa;
-            font-weight: 600;
-            color: #1f2328;
-        }
-
-        tr:hover {
-            background: #f6f8fa;
-        }
-
-        /* Blockquotes */
-        blockquote {
-            border-left: 4px solid #2563eb;
-            padding-left: 16px;
-            margin: 16px 0;
-            color: #656d76;
-            background: #f6f8fa;
-            padding: 16px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        /* Links */
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Strong text */
-        strong {
-            font-weight: 600;
-            color: #1f2328;
-        }
-
-        /* Horizontal rules */
-        hr {
-            border: none;
-            height: 1px;
-            background: #d1d9e0;
-            margin: 24px 0;
-        }
-
-        /* Emoji support */
-        .emoji {
-            font-style: normal;
-            font-size: 1.2em;
-            vertical-align: middle;
+            padding: 2.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
         }
 
         /* Loading and error states */
         .loading {
             text-align: center;
-            padding: 40px;
-            color: #656d76;
+            padding: 3rem;
+            color: #666;
             font-size: 1.1rem;
         }
 
@@ -189,57 +116,294 @@
             background: #fef2f2;
             border: 1px solid #fecaca;
             color: #dc2626;
-            padding: 16px;
-            border-radius: 6px;
-            margin: 16px 0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .error h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* Markdown Content Styling */
+        .markdown-content h1,
+        .markdown-content h2,
+        .markdown-content h3,
+        .markdown-content h4,
+        .markdown-content h5,
+        .markdown-content h6 {
+            color: #333;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .markdown-content h1 {
+            font-size: 2.25rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .markdown-content h2 {
+            font-size: 1.75rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .markdown-content h3 {
+            font-size: 1.375rem;
+            color: #2563eb;
+        }
+
+        .markdown-content h4 {
+            font-size: 1.125rem;
+            color: #374151;
+        }
+
+        /* Remove IDs from headings display */
+        .markdown-content h1 a,
+        .markdown-content h2 a,
+        .markdown-content h3 a,
+        .markdown-content h4 a,
+        .markdown-content h5 a,
+        .markdown-content h6 a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Paragraphs */
+        .markdown-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        /* Lists */
+        .markdown-content ul,
+        .markdown-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 2rem;
+        }
+
+        .markdown-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        /* Code and pre */
+        .markdown-content code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .markdown-content pre {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            line-height: 1.5;
+        }
+
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: 0.875rem;
+        }
+
+        /* Tables */
+        .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .markdown-content th,
+        .markdown-content td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .markdown-content th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .markdown-content tr:hover {
+            background: #f8fafc;
+        }
+
+        .markdown-content tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Links */
+        .markdown-content a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .markdown-content a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* Strong and emphasis */
+        .markdown-content strong {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .markdown-content em {
+            font-style: italic;
+            color: #4b5563;
+        }
+
+        /* Blockquotes */
+        .markdown-content blockquote {
+            border-left: 4px solid #2563eb;
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            color: #4b5563;
+        }
+
+        /* Horizontal rules */
+        .markdown-content hr {
+            border: none;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 2rem 0;
+        }
+
+        /* Emoji styling */
+        .emoji {
+            font-style: normal;
+            font-size: 1.2em;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        /* Special styling for badges/tags */
+        .markdown-content code:not(pre code) {
+            font-weight: 500;
         }
 
         /* Responsive design */
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-title {
+                font-size: 1.5rem;
+            }
+            
             .container {
-                padding: 16px;
+                padding: 0 1rem 1rem;
             }
             
-            .header {
-                margin: -16px -16px 16px -16px;
+            .content-area {
                 padding: 1.5rem;
             }
             
-            .header h1 {
-                font-size: 2rem;
+            .markdown-content h1 {
+                font-size: 1.875rem;
             }
             
-            .markdown-content {
-                padding: 1.5rem;
+            .markdown-content h2 {
+                font-size: 1.5rem;
             }
             
-            h1 { font-size: 1.75rem; }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1.25rem; }
+            .markdown-content table {
+                font-size: 0.875rem;
+            }
+            
+            .markdown-content th,
+            .markdown-content td {
+                padding: 0.5rem 0.75rem;
+            }
         }
 
         /* Print styles */
         @media print {
-            .header {
-                background: #2563eb !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
+            .header,
+            .back-button {
+                display: none;
             }
+            
+            body {
+                background: white;
+            }
+            
+            .content-area {
+                box-shadow: none;
+                border: none;
+            }
+        }
+
+        /* Table wrapper for mobile scroll */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .table-wrapper table {
+            margin: 0;
+            border: none;
+            border-radius: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>💧 EcoAqua Documentation</h1>
-            <p>Calculateur d'empreinte hydrique - HUMANBLINK Innovation</p>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div>
+                    <h1 class="header-title">Documentation</h1>
+                    <p class="header-subtitle">Développé avec 💧❤️ par HUMANBLINK Innovation</p>
+                </div>
+            </div>
+            <a href="https://humanblink.github.io/calculator/index.html" class="back-button">
+                ← Retour au Calculateur
+            </a>
         </div>
-        
-        <div class="markdown-content">
+    </div>
+    
+    <div class="container">
+        <div class="content-area">
             <div class="loading" id="loading">
                 📖 Chargement de la documentation...
             </div>
-            <div id="content" style="display: none;"></div>
+            <div id="content" class="markdown-content" style="display: none;"></div>
         </div>
     </div>
 
@@ -251,7 +415,7 @@
         marked.setOptions({
             breaks: true,
             gfm: true,
-            headerIds: true,
+            headerIds: false,  // Disable header IDs to prevent ugly ID strings
             mangle: false
         });
 
@@ -280,11 +444,28 @@
                 loadingEl.style.display = 'none';
                 contentEl.style.display = 'block';
                 
-                // Process emojis (basic emoji support)
+                // Remove the main title (first h1 containing EcoAqua)
+        function removeMainTitle() {
+            const firstH1 = document.querySelector('#content h1');
+            if (firstH1 && (firstH1.textContent.includes('EcoAqua') || firstH1.textContent.includes('💧'))) {
+                firstH1.remove();
+            }
+        }
+
+        // Clean up heading IDs and anchor links
+                cleanUpHeadings();
+                
+                // Remove main title (first h1)
+                removeMainTitle();
+                
+                // Process emojis
                 processEmojis();
                 
-                // Add table styling
-                styleTables();
+                // Add table wrappers for mobile
+                wrapTables();
+                
+                // Enhance external links
+                enhanceLinks();
                 
                 console.log('✅ README.md loaded and rendered successfully');
                 
@@ -299,6 +480,21 @@
             }
         }
 
+        // Clean up heading IDs and anchor links
+        function cleanUpHeadings() {
+            const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            headings.forEach(heading => {
+                // Remove any ID attributes
+                heading.removeAttribute('id');
+                
+                // If heading contains only an anchor link, extract the text
+                const anchor = heading.querySelector('a');
+                if (anchor && heading.children.length === 1) {
+                    heading.innerHTML = anchor.textContent;
+                }
+            });
+        }
+
         // Basic emoji processing
         function processEmojis() {
             const content = document.getElementById('content');
@@ -309,26 +505,31 @@
             }
         }
 
-        // Add responsive table styling
-        function styleTables() {
+        // Wrap tables for horizontal scrolling on mobile
+        function wrapTables() {
             const tables = document.querySelectorAll('table');
             tables.forEach(table => {
-                // Wrap tables for horizontal scrolling on mobile
-                const wrapper = document.createElement('div');
-                wrapper.style.overflowX = 'auto';
-                wrapper.style.marginBottom = '16px';
-                table.parentNode.insertBefore(wrapper, table);
-                wrapper.appendChild(table);
+                if (!table.parentElement.classList.contains('table-wrapper')) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'table-wrapper';
+                    table.parentNode.insertBefore(wrapper, table);
+                    wrapper.appendChild(table);
+                }
+            });
+        }
+
+        // Enhanced link handling
+        function enhanceLinks() {
+            const links = document.querySelectorAll('a[href^="http"]');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
             });
         }
 
         // Fallback content when README.md cannot be loaded
         function loadFallbackContent() {
-            const fallbackMarkdown = `# 💧 EcoAqua - Calculateur d'Empreinte Hydrique
-
-Un calculateur d'empreinte hydrique avancé pour la région de Genève, développé par HUMANBLINK Innovation.
-
-## 🌟 Aperçu
+            const fallbackMarkdown = `## 🌟 Aperçu
 
 EcoAqua est une application web complète qui permet de calculer et d'estimer la consommation d'eau pour différents usages dans la région genevoise. L'outil intègre trois modules principaux pour une analyse complète de l'empreinte hydrique, avec fonctionnalités avancées de rapport PDF et retour utilisateur.
 
@@ -390,18 +591,14 @@ EcoAqua s'inscrit dans une démarche de développement durable et de gestion res
 
 ---
 
-⚠️ **Note**: Cette documentation est chargée en mode fallback. Pour voir la version complète, veuillez:
-1. Placer le fichier README.md dans le même dossier
-2. Servir les fichiers via un serveur web local (\`python -m http.server\`)
-3. Ouvrir via http://localhost:8000 au lieu de file://
-
 **Développé avec 💧 par HUMANBLINK Innovation**`;
 
             const html = marked.parse(fallbackMarkdown);
             document.getElementById('content').innerHTML = html;
             
+            cleanUpHeadings();
             processEmojis();
-            styleTables();
+            wrapTables();
             
             console.log('📄 Fallback content loaded');
         }
