@@ -1,13 +1,13 @@
-<!-- index.html - Final Water Calculator - v1.9.16 -->
+<!-- index.html - Final Water Calculator - v1.9.17 -->
 <!-- Author: HUMANBLINK Innovation -->
-<!-- Version: 1.9.16 -->
-<!-- Updated: 2025-06-11 16:15 -->
-<!-- Changes in v1.9.16: 
-     - Added Print-to-PDF download functionality with HUMANBLINK branding
-     - Professional PDF layout with logo, contact info, and clean formatting
-     - Download button positioned prominently after all calculations
-     - Print-only elements hidden from screen view
-     - Updated CSS version reference to 3.16.0
+<!-- Version: 1.9.17 -->
+<!-- Updated: 2025-06-11 16:30 -->
+<!-- Changes in v1.9.17: 
+     - Added project description section below region subtitle
+     - Link to README.md file for detailed project information
+     - Professional styling with hover effects and responsive design
+     - Enhanced user understanding of project context and value
+     - Updated CSS version reference to 3.17.0
      - Maintained all existing functionality and accessibility
 -->
 <!-- Previous changes in v1.9.15: 
@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=3.16.0">
+  <link rel="stylesheet" href="css/style.css?v=3.17.0">
   
   <!-- Plausible Analytics -->
   <script defer data-domain="humanblink.github.io/calculator/index.html" src="https://plausible.io/js/script.js"></script>
@@ -61,6 +61,15 @@
       <!-- Text subtitles preserved as HTML for maintainability -->
       <h2 class="main-subtitle">Calculateur d'empreinte hydrique</h2>
       <h3 class="region-subtitle">Région Ville de Genève</h3>
+      
+      <!-- Project description section -->
+      <div class="project-description">
+        <p>Outil professionnel d'analyse de consommation d'eau pour espaces verts et bâtiments. 
+        Calculs basés sur données officielles suisses avec spécificités genevoises.</p>
+        <a href="README.md" target="_blank" rel="noopener noreferrer" class="project-link">
+          📖 En savoir plus sur le projet
+        </a>
+      </div>
     </header>
 
     <!-- Section 1: Garden Irrigation Calculator -->
@@ -243,7 +252,7 @@
         <div class="footer-company">
           <img src="img/humanblink-logo.png" alt="HUMANBLINK" height="18">
         </div>
-        <div class="footer-version">v1.9.16</div>
+        <div class="footer-version">v1.9.17</div>
         <div class="footer-disclaimer">Utilisation à des fins d'évaluation uniquement</div>
         <div class="footer-copyright">
           © 2025 HUMANBLINK Innovation - Tous droits réservés
@@ -308,7 +317,7 @@
   
   <!-- Diagnostic script to check if JS functions are loaded -->
   <script>
-    console.log("EcoAqua v1.9.16 - Print-to-PDF Download Added - Checking JS files:");
+    console.log("EcoAqua v1.9.17 - Project Description Added - Checking JS files:");
     console.log("garden.js loaded:", typeof calculateIrrigation === "function");
     console.log("building.js loaded:", typeof calculateWaterUse === "function"); 
     console.log("cost.js loaded:", typeof calculateCost === "function");

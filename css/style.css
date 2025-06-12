@@ -1,22 +1,22 @@
 /* Enhanced Water Calculator - style.css
  * Author: Original by HUMANBLINK Innovation, enhanced by Claude
- * Version: 3.16.0 - Print-to-PDF Functionality
- * Date: 2025-06-11 16:15
+ * Version: 3.17.0 - Project Description Section
+ * Date: 2025-06-11 16:30
  * 
- * ✅ READY FOR DEPLOYMENT - EcoAqua v1.9.16 CSS File
+ * ✅ READY FOR DEPLOYMENT - EcoAqua v1.9.17 CSS File
  * 
- * Changes in v3.16.0:
+ * Changes in v3.17.0:
+ * - Added project description section styling below header
+ * - Professional link styling for README access
+ * - Responsive design for project information display
+ * - Enhanced user understanding of project context
+ * - Maintained all existing functionality for all components
+ * 
+ * Previous changes in v3.16.0:
  * - Added comprehensive print styles for PDF generation
  * - Print-only HUMANBLINK branding and contact information
  * - Professional PDF layout optimized for A4 format
  * - Hidden interactive elements in print view
- * - Maintained all existing functionality for screen view
- * 
- * Previous changes in v3.15.0:
- * - Added .input-explanation class for helpful text under inputs
- * - Enhanced range slider styling for adjustment percentage
- * - Added responsive design for new input elements
- * - Improved visual hierarchy for form elements
  */
 
 :root {
@@ -91,8 +91,47 @@ body {
   font-weight: 300;
   font-size: 1.1rem;
   color: var(--smart-water-gray);
-  margin: 0;
+  margin: 0 0 1rem 0;
   letter-spacing: 0.01em;
+}
+
+/* Project description section - NEW in v3.16.0 */
+.project-description {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.project-description p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-light);
+  border-radius: 6px;
+  background-color: var(--primary-light);
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(1, 78, 235, 0.2);
 }
 
 /* Legacy styles - keeping for backwards compatibility but not used */
@@ -1019,6 +1058,20 @@ span[style*="color: green"] {
   
   .region-subtitle {
     font-size: 1rem;
+  }
+  
+  /* Project description mobile adjustments */
+  .project-description {
+    padding: 0 0.5rem;
+  }
+  
+  .project-description p {
+    font-size: 0.9rem;
+  }
+  
+  .project-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
   }
   
   .module-section {
