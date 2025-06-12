@@ -1,9 +1,7 @@
-# 💧 EcoAqua - Calculateur d'Empreinte Hydrique
-
-Un calculateur d'empreinte hydrique avancé pour la région de Genève.
 ## 🌟 Aperçu
 
 EcoAqua est une application web complète qui permet de calculer et d'estimer la consommation d'eau pour différents usages dans la région genevoise. L'outil intègre trois modules principaux pour une analyse complète de l'empreinte hydrique, avec fonctionnalités avancées de rapport PDF et retour utilisateur.
+'''Documentation v.1.0.9'''
 
 ### 🎯 Contexte du Projet
 
@@ -88,9 +86,9 @@ Face aux enjeux croissants de la préservation de l'eau et de l'optimisation de 
 
 ```
 calculator/
-├── index.html              # Page principale (v1.9.16)
+├── index.html              # Page principale (v1.9.17)
 ├── css/
-│   └── style.css           # Styles principaux (v3.16.0)
+│   └── style.css           # Styles principaux (v3.17.0)
 ├── js/
 │   ├── garden.js           # Module arrosage (v2.1.7)
 │   ├── building.js         # Module bâtiments (v2.6.0)
@@ -100,7 +98,7 @@ calculator/
 ├── img/
 │   ├── humanblink-logo.png # Logo entreprise
 │   └── smart-water-logo.svg # Logo EcoAqua
-└── README.md               # Documentation
+└── README.md               # Documentation (v1.0.9)
 ```
 
 ## 📋 Utilisation
@@ -194,5 +192,5 @@ Ce projet est développé par **HUMANBLINK Innovation**. Pour toute suggestion o
 
 ---
 
-**Développé avec 💧 par HUMANBLINK Innovation**  
-*Calculateur d'empreinte hydrique professionnel pour la région genevoise*
+**Développé avec 💧❤️ par HUMANBLINK Innovation**  
+
