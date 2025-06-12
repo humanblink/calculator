@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoAqua - Documentation</title>
+    <style>
+        /* GitHub-inspired styling with HUMANBLINK branding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            background: #ffffff;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1012px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        /* Header styling */
+        .header {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 2rem;
+            margin: -32px -32px 32px -32px;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Markdown content styling */
+        .markdown-content {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #1f2328;
+        }
+
+        h1 { font-size: 2rem; border-bottom: 1px solid #d1d9e0; padding-bottom: 10px; }
+        h2 { font-size: 1.5rem; border-bottom: 1px solid #d1d9e0; padding-bottom: 8px; }
+        h3 { font-size: 1.25rem; }
+        h4 { font-size: 1rem; }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Code blocks */
+        pre {
+            background: #f6f8fa;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+            border: 1px solid #d1d9e0;
+        }
+
+        code {
+            background: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875rem;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 16px;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #d1d9e0;
+        }
+
+        th {
+            background: #f6f8fa;
+            font-weight: 600;
+            color: #1f2328;
+        }
+
+        tr:hover {
+            background: #f6f8fa;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #2563eb;
+            padding-left: 16px;
+            margin: 16px 0;
+            color: #656d76;
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Links */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Strong text */
+        strong {
+            font-weight: 600;
+            color: #1f2328;
+        }
+
+        /* Horizontal rules */
+        hr {
+            border: none;
+            height: 1px;
+            background: #d1d9e0;
+            margin: 24px 0;
+        }
+
+        /* Emoji support */
+        .emoji {
+            font-style: normal;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+
+        /* Loading and error states */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #656d76;
+            font-size: 1.1rem;
+        }
+
+        .error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header {
+                margin: -16px -16px 16px -16px;
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .markdown-content {
+                padding: 1.5rem;
+            }
+            
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+        }
+
+        /* Print styles */
+        @media print {
+            .header {
+                background: #2563eb !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💧 EcoAqua Documentation</h1>
+            <p>Calculateur d'empreinte hydrique - HUMANBLINK Innovation</p>
+        </div>
+        
+        <div class="markdown-content">
+            <div class="loading" id="loading">
+                📖 Chargement de la documentation...
+            </div>
+            <div id="content" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    
+    <script>
+        // Configure marked options
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            headerIds: true,
+            mangle: false
+        });
+
+        // Function to load and render README.md
+        async function loadReadme() {
+            const loadingEl = document.getElementById('loading');
+            const contentEl = document.getElementById('content');
+            
+            try {
+                // Try to fetch README.md from the same directory
+                const response = await fetch('README.md');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const markdown = await response.text();
+                
+                // Convert markdown to HTML
+                const html = marked.parse(markdown);
+                
+                // Insert the HTML content
+                contentEl.innerHTML = html;
+                
+                // Hide loading, show content
+                loadingEl.style.display = 'none';
+                contentEl.style.display = 'block';
+                
+                // Process emojis (basic emoji support)
+                processEmojis();
+                
+                // Add table styling
+                styleTables();
+                
+                console.log('✅ README.md loaded and rendered successfully');
+                
+            } catch (error) {
+                console.error('❌ Error loading README.md:', error);
+                
+                loadingEl.style.display = 'none';
+                contentEl.style.display = 'block';
+                
+                // Load fallback content with embedded README
+                loadFallbackContent();
+            }
+        }
+
+        // Basic emoji processing
+        function processEmojis() {
+            const content = document.getElementById('content');
+            if (content) {
+                // Wrap common emojis in spans for better styling
+                const emojiRegex = /([\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}])/gu;
+                content.innerHTML = content.innerHTML.replace(emojiRegex, '<span class="emoji">$1</span>');
+            }
+        }
+
+        // Add responsive table styling
+        function styleTables() {
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                // Wrap tables for horizontal scrolling on mobile
+                const wrapper = document.createElement('div');
+                wrapper.style.overflowX = 'auto';
+                wrapper.style.marginBottom = '16px';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            });
+        }
+
+        // Fallback content when README.md cannot be loaded
+        function loadFallbackContent() {
+            const fallbackMarkdown = `# 💧 EcoAqua - Calculateur d'Empreinte Hydrique
+
+Un calculateur d'empreinte hydrique avancé pour la région de Genève, développé par HUMANBLINK Innovation.
+
+## 🌟 Aperçu
+
+EcoAqua est une application web complète qui permet de calculer et d'estimer la consommation d'eau pour différents usages dans la région genevoise. L'outil intègre trois modules principaux pour une analyse complète de l'empreinte hydrique, avec fonctionnalités avancées de rapport PDF et retour utilisateur.
+
+### 🎯 Contexte du Projet
+
+EcoAqua s'inscrit dans une démarche de développement durable et de gestion responsable des ressources hydriques dans la région genevoise. Face aux enjeux croissants de la préservation de l'eau et de l'optimisation de sa consommation, cet outil répond aux besoins concrets des particuliers, entreprises et collectivités.
+
+**Objectifs principaux :**
+- **Sensibilisation** à la consommation d'eau réelle des espaces verts et bâtiments
+- **Optimisation** des systèmes d'arrosage et de gestion hydrique
+- **Économies** substantielles sur les factures d'eau SIG
+- **Aide à la décision** pour projets d'aménagement et rénovation
+- **Conformité** aux standards environnementaux suisses et genevois
+
+## 📊 Modules
+
+### 🌿 Arrosage des Espaces Verts
+- Calcul des besoins en irrigation basé sur l'évapotranspiration (ET₀)
+- Prise en compte du type de plante, sol, exposition et méthode d'arrosage
+- Ajustements saisonniers et option capteurs de sols
+- Données climatiques spécifiques à Genève
+- Sélection interactive des mois d'arrosage
+
+### 🏢 Consommation Eau des Bâtiments
+- Estimation pour différents types d'usage (ménages, écoles, bureaux, clubs sportifs, municipaux)
+- **Calculs précis par type :** Sport Clubs (104 visites/an), Écoles (252 jours ouvrables Genève)
+- **Sliders interactifs :** Ajustement de consommation (-100% à +100%) et taux d'occupation (-50% à +50%)
+- Profils de consommation saisonniers spécifiques à Genève
+- Calculs per capita détaillés avec méthodologie transparente
+
+### 💰 Estimation du Coût (SIG)
+- Tarification SIG 2025 avec tranches progressives
+- Calcul d'économies potentielles avec arrosage intelligent
+- Comparaison avant/après optimisation
+- Coûts mensuels et annuels détaillés
+- Auto-population des résultats entre modules
+
+## 🚀 Fonctionnalités
+
+- **Interface responsive** - Optimisée pour desktop et mobile
+- **Calculs en temps réel** - Résultats instantanés avec sliders interactifs
+- **Données officielles** - Basé sur sources suisses et genevoises (SSIGE, OCSTAT, MétéoSuisse, FAO)
+- **Footnotes interactives** - Documentation détaillée des méthodologies (collapsibles)
+- **Auto-population** - Transfert automatique des résultats entre modules
+- **Analytics** - Suivi d'usage avec Plausible
+- **PDF Download** - Rapports professionnels avec branding HUMANBLINK
+- **Validation intelligente** - Contrôles de cohérence et messages d'aide
+
+## 📞 Contact & Support
+
+**HUMANBLINK Innovation**
+- **Téléphone**: 076 295 68 36
+- **Email**: gavardo.rettaroli@humanblink.ch  
+- **Web**: www.humanblink.ch
+
+## 🌐 Démonstration
+
+**Live Demo**: [https://humanblink.github.io/calculator/](https://humanblink.github.io/calculator/)
+
+---
+
+⚠️ **Note**: Cette documentation est chargée en mode fallback. Pour voir la version complète, veuillez:
+1. Placer le fichier README.md dans le même dossier
+2. Servir les fichiers via un serveur web local (\`python -m http.server\`)
+3. Ouvrir via http://localhost:8000 au lieu de file://
+
+**Développé avec 💧 par HUMANBLINK Innovation**`;
+
+            const html = marked.parse(fallbackMarkdown);
+            document.getElementById('content').innerHTML = html;
+            
+            processEmojis();
+            styleTables();
+            
+            console.log('📄 Fallback content loaded');
+        }
+
+        // Load README when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReadme();
+        });
+
+        // Optional: Auto-refresh functionality (useful during development)
+        // Uncomment the following lines to enable auto-refresh every 30 seconds
+        /*
+        setInterval(() => {
+            console.log('🔄 Auto-refreshing README content...');
+            loadReadme();
+        }, 30000);
+        */
+    </script>
+</body>
+</html>

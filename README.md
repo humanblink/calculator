@@ -6,6 +6,30 @@ Un calculateur d'empreinte hydrique avancé pour la région de Genève, dévelop
 
 EcoAqua est une application web complète qui permet de calculer et d'estimer la consommation d'eau pour différents usages dans la région genevoise. L'outil intègre trois modules principaux pour une analyse complète de l'empreinte hydrique, avec fonctionnalités avancées de rapport PDF et retour utilisateur.
 
+### 🎯 Contexte du Projet
+
+EcoAqua s'inscrit dans une démarche de développement durable et de gestion responsable des ressources hydriques dans la région genevoise. Face aux enjeux croissants de la préservation de l'eau et de l'optimisation de sa consommation, cet outil répond aux besoins concrets des particuliers, entreprises et collectivités.
+
+**Objectifs principaux :**
+- **Sensibilisation** à la consommation d'eau réelle des espaces verts et bâtiments
+- **Optimisation** des systèmes d'arrosage et de gestion hydrique
+- **Économies** substantielles sur les factures d'eau SIG
+- **Aide à la décision** pour projets d'aménagement et rénovation
+- **Conformité** aux standards environnementaux suisses et genevois
+
+**Public cible :**
+- Propriétaires de jardins et espaces verts
+- Gestionnaires d'immeubles et facilities managers
+- Bureaux d'études en environnement et développement durable
+- Collectivités publiques et administrations
+- Entreprises engagées dans une démarche RSE
+
+**Valeur ajoutée :**
+- Calculs basés sur **données officielles suisses** (MétéoSuisse, SSIGE, OCSTAT)
+- **Spécificités genevoises** : jours ouvrables, climat local, tarification SIG
+- **Méthodologies transparentes** avec sources scientifiques référencées
+- **Rapports professionnels** pour présentation et suivi de projets
+
 ## 📊 Modules
 
 ### 🌿 Arrosage des Espaces Verts
@@ -78,27 +102,6 @@ calculator/
 │   └── smart-water-logo.svg # Logo Smart Water
 └── README.md               # Documentation
 ```
-
-## 🔧 Installation & Usage
-
-### Déploiement Local
-```bash
-# Cloner le repository
-git clone https://github.com/humanblink/calculator.git
-
-# Naviguer dans le dossier
-cd calculator
-
-# Ouvrir avec un serveur web local
-python -m http.server 8000
-# ou
-npx serve .
-```
-
-### Déploiement GitHub Pages
-1. Fork ou clone le repository
-2. Activer GitHub Pages dans les settings
-3. L'application sera accessible sur `https://[username].github.io/calculator/`
 
 ## 📋 Utilisation
 
