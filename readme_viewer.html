@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
+<!--
+    README Viewer - Dynamic Markdown Renderer
+    Version: 1.0.9
+    Date: June 12, 2025
+    Developer: HUMANBLINK Innovation
+    
+    Changelog v1.0.9:
+    - Header redesign: removed blue box, updated title to "Documentation"
+    - Updated subtitle: "Développé avec 💧❤️ par HUMANBLINK Innovation"
+    - Fixed title rendering issues (removed ID artifacts from headings)
+    - Added navigation button back to calculator
+    - Removed main title from content (starts with "🌟 Aperçu")
+    - Removed technical warning note from fallback content
+    - Design matching calculator aesthetic with clean white header
+    - Consistent HUMANBLINK blue (#2563eb) styling throughout
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -411,11 +427,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     
     <script>
+        // README Viewer JavaScript Functions
+        // Version: 1.0.9 - June 12, 2025
+        // HUMANBLINK Innovation
+        
         // Configure marked options
         marked.setOptions({
             breaks: true,
             gfm: true,
-            headerIds: false,  // Disable header IDs to prevent ugly ID strings
+            headerIds: false,  // v1.0.9: Disable header IDs to prevent ugly ID strings
             mangle: false
         });
 
@@ -445,6 +465,7 @@
                 contentEl.style.display = 'block';
                 
                 // Remove the main title (first h1 containing EcoAqua)
+        // v1.0.9: Added function to remove main title, content starts with "🌟 Aperçu"
         function removeMainTitle() {
             const firstH1 = document.querySelector('#content h1');
             if (firstH1 && (firstH1.textContent.includes('EcoAqua') || firstH1.textContent.includes('💧'))) {
@@ -481,6 +502,7 @@
         }
 
         // Clean up heading IDs and anchor links
+        // v1.0.9: Enhanced function to fix title rendering issues
         function cleanUpHeadings() {
             const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
             headings.forEach(heading => {
@@ -528,6 +550,7 @@
         }
 
         // Fallback content when README.md cannot be loaded
+        // v1.0.9: Updated fallback content - removed main title and warning note
         function loadFallbackContent() {
             const fallbackMarkdown = `## 🌟 Aperçu
 

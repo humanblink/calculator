@@ -1,14 +1,14 @@
 # 💧 EcoAqua - Calculateur d'Empreinte Hydrique
 
-Un calculateur d'empreinte hydrique avancé pour la région de Genève, développé par HUMANBLINK Innovation.
-
+Un calculateur d'empreinte hydrique avancé pour la région de Genève.
 ## 🌟 Aperçu
 
 EcoAqua est une application web complète qui permet de calculer et d'estimer la consommation d'eau pour différents usages dans la région genevoise. L'outil intègre trois modules principaux pour une analyse complète de l'empreinte hydrique, avec fonctionnalités avancées de rapport PDF et retour utilisateur.
 
 ### 🎯 Contexte du Projet
 
-EcoAqua s'inscrit dans une démarche de développement durable et de gestion responsable des ressources hydriques dans la région genevoise. Face aux enjeux croissants de la préservation de l'eau et de l'optimisation de sa consommation, cet outil répond aux besoins concrets des particuliers, entreprises et collectivités.
+EcoAqua s'inscrit dans une démarche de développement durable et de gestion responsable des ressources hydriques dans la région genevoise.
+Face aux enjeux croissants de la préservation de l'eau et de l'optimisation de sa consommation, cet outil répond aux besoins concrets des particuliers, entreprises et collectivités.
 
 **Objectifs principaux :**
 - **Sensibilisation** à la consommation d'eau réelle des espaces verts et bâtiments
@@ -57,7 +57,7 @@ EcoAqua s'inscrit dans une démarche de développement durable et de gestion res
 - **Génération PDF** avec branding HUMANBLINK complet
 - **Print-to-PDF** natif sans dépendances externes
 - Inclut tous les résultats de calcul et méthodologies
-- Contact direct HUMANBLINK pour suivi commercial
+- Contact direct HUMANBLINK pour suivi
 - Avertissements professionnels et disclaimers
 
 ### 💬 Retour Utilisateur
@@ -69,11 +69,11 @@ EcoAqua s'inscrit dans une démarche de développement durable et de gestion res
 
 - **Interface responsive** - Optimisée pour desktop et mobile
 - **Calculs en temps réel** - Résultats instantanés avec sliders interactifs
-- **Données officielles** - Basé sur sources suisses et genevoises (SSIGE, OCSTAT, MétéoSuisse, FAO)
+- **Données officielles** - Basé sur des sources genevoises, suisses et européennes. (SSIGE, OCSTAT, MétéoSuisse, FAO)
 - **Footnotes interactives** - Documentation détaillée des méthodologies (collapsibles)
 - **Auto-population** - Transfert automatique des résultats entre modules
 - **Analytics** - Suivi d'usage avec Plausible
-- **PDF Download** - Rapports professionnels avec branding HUMANBLINK
+- **PDF Download** - Rapport professionnel
 - **Validation intelligente** - Contrôles de cohérence et messages d'aide
 
 ## 🛠️ Technologies
@@ -99,7 +99,7 @@ calculator/
 │   └── download.js         # Génération PDF (v1.0.0)
 ├── img/
 │   ├── humanblink-logo.png # Logo entreprise
-│   └── smart-water-logo.svg # Logo Smart Water
+│   └── smart-water-logo.svg # Logo EcoAqua
 └── README.md               # Documentation
 ```
 
@@ -153,15 +153,6 @@ calculator/
 - ✅ Sliders interactifs pour ajustements (bâtiments)
 - ✅ Textes explicatifs sous les inputs
 - ✅ Taux d'occupation pour tous les types de bâtiments
-
-### v2.6.0 Building Module (2025-06-11)
-- ✅ Calcul précis Écoles/Universités (252 jours ouvrables Genève)
-- ✅ Calcul précis Sport Clubs (104 visites/an)
-- ✅ Taux d'occupation appliqué à tous les types
-- ✅ Documentation complète des méthodologies
-
-### Versions antérieures
-Voir les commentaires de version dans chaque fichier pour l'historique complet.
 
 ## 🎨 Design & UX
 
