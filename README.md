@@ -127,7 +127,7 @@ calculator/
 - **Print-to-PDF natif** sans librairies externes
 - **Validation automatique** des données avant génération
 - **Layout optimisé A4** avec branding complet
-- **Contact HUMANBLINK** pour génération de leads
+- **Contact HUMANBLINK** pour communication
 
 ## 📚 Sources de Données
 
